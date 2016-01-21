@@ -43,10 +43,13 @@
 			<div id=\"c\"><img src=\"image/mercato.png\" width=\"177,2\" height=\"59,1\" alt=\"\"></div>
 			<div id=\"d\"><img src=\"image/cerca.png\" width=\"177,2\" height=\"59,1\" alt=\"\"></div>
 			<div id=\"e\"><img src=\"image/logout.png\" width=\"177,2\" height=\"59,1\" alt=\"\"></div>
+			
+			<!--Frame per la classifica di serie a e gli ultimi risultati-->
+			<iframe src=\"http://www.ilcalcio.net/classifica-serie-A.htm\" width=\"256\" height=\"244\" scrolling=\"auto\" frameborder=\"0\"> 
+<font size=\"1\" face=\"Tahoma\">Se il tuo browser non supporta i frame in linea clicca
+<a href=\"http://www.ilcalcio.net/\" target=\"_blank\">QUI</a></font></iframe>
 		</div>
-		<div style=\"float:left\">
 		
-		</div>
 		<div id=\"corpo\" style=\"float:center\">
 			
 		</div>
