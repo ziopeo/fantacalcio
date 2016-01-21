@@ -42,71 +42,85 @@
 		
 		<!--contenitore-->
 		<div id=\"contenitore\">
-			<div id=\"menù\" style=\"float:left\">
-				<a href=\"home.php\">
-					<div id=\"areaUtente\">
-						<img src=\"image/areaUtente.png\" width=\"177,2\" height=\"59,1\" alt=\"\"/>
-					</div>
-				</a>
-				<div id=\"b\"><img src=\"image/squadra.png\" width=\"177,2\" height=\"59,1\" alt=\"\"/></div>
-				<div id=\"c\"><img src=\"image/mercato.png\" width=\"177,2\" height=\"59,1\" alt=\"\"></div>
-				<div id=\"d\"><img src=\"image/cerca.png\" width=\"177,2\" height=\"59,1\" alt=\"\"></div>
-				<div id=\"e\"><img src=\"image/logout.png\" width=\"177,2\" height=\"59,1\" alt=\"\"></div>
+			<!-- Section per la barra laterale contenente il menù -->
+			<section id=\"sidebar\">
+				<div id=\"menù\" style=\"float:left\">
+					<a href=\"home.php\">
+						<div id=\"areaUtente\">
+							<img src=\"image/areaUtente.png\" width=\"177,2\" height=\"59,1\" alt=\"\"/>
+						</div>
+					</a>
+					<div id=\"b\"><img src=\"image/squadra.png\" width=\"177,2\" height=\"59,1\" alt=\"\"/></div>
+					<div id=\"c\"><img src=\"image/mercato.png\" width=\"177,2\" height=\"59,1\" alt=\"\"></div>
+					<div id=\"d\"><img src=\"image/cerca.png\" width=\"177,2\" height=\"59,1\" alt=\"\"></div>
+					<div id=\"e\"><img src=\"image/logout.png\" width=\"177,2\" height=\"59,1\" alt=\"\"></div>
 			
-				<!--Frame per la classifica di serie a e gli ultimi risultati-->
-				<iframe src=\"http://www.ilcalcio.net/classifica-serie-A.htm\" width=\"256\" height=\"244\" scrolling=\"auto\" frameborder=\"0\"> 
-				<font size=\"1\" face=\"Tahoma\">Se il tuo browser non supporta i frame in linea clicca
-				<a href=\"http://www.ilcalcio.net/\" target=\"_blank\">QUI</a></font></iframe>
+					<!--Frame per la classifica di serie a e gli ultimi risultati-->
+					<iframe src=\"http://www.ilcalcio.net/classifica-serie-A.htm\" width=\"256\" height=\"244\" scrolling=\"auto\" frameborder=\"0\"> 
+					<font size=\"1\" face=\"Tahoma\">Se il tuo browser non supporta i frame in linea clicca
+					<a href=\"http://www.ilcalcio.net/\" target=\"_blank\">QUI</a></font></iframe>
+					<!-- Fine frame -->
+				</div>
+			</section>
+			<!-- Fine section -->
+			
+			<!-- Inizio footer corpoCentrale -->
+			<footer id=\"corpoCentrale\">
+				<div id=\"corpo\" style=\"float:center\">
+					<table width=\"79%\" border=\"1\" bordercolor=\"rgba(47,145,60,1.00)\">
+  						<tbody>
+  							<tr>
+    							<td colspan=\"2\" align=\"center\"><strong> Dati utente </strong></td>
+   							</tr>
+    						<tr>
+      							<td width=\"22%\"><strong>Nome</strong></td>
+      							<td width=\"78%\">&nbsp;</td>
+    						</tr>
+    						<tr>
+      							<td><strong>Cognome</strong></td>
+      							<td>&nbsp;</td>
+    						</tr>
+    						<tr>
+      							<td><strong>Matricola</strong></td>
+      							<td>&nbsp;</td>
+    						</tr>
+    						<tr>
+      							<td><strong>Facoltà</strong></td>
+      							<td>&nbsp;</td>
+    						</tr>
+   	 						<tr>
+      							<td><strong>Email</strong></td>
+      							<td>&nbsp;</td>
+    						</tr>
+    						<tr>
+      							<td><strong>Nuova mail</strong></td>
+								<!-- controllare tramite foglio di stile la grandeza dell'input -->
+      							<td><input type=\"text\" placeholder=\"esempio@esempio.it\"></td>
+    						</tr>
+    						<tr>
+      							<td><strong>Nome squadra</strong></td>
+      							<td>&nbsp;</td>
+    						</tr>
+    						<tr>
+      							<td><strong>Password</strong></td>
+      							<td>&nbsp;</td>
+    						</tr>
+    						<tr>
+      							<td><strong>Nuova password</strong></td>
+      							<td><input type=\"text\" placeholder=\"password\"></td>
+                  			</tr>
+						</tbody>
+					</table>
+					<img src=\"image/salvamodifiche.png\" alt=\"\" width=\"184\" height=\"43\" align=\"right\"/>
+				</div>
 			</div>
+			<!-- Fine contenitore -->
+		</section>
+		<!-- Fine section corpoCentrale -->
 		
-			<div id=\"corpo\" style=\"float:center\">
-				<table width=\"79%\" border=\"1\" bordercolor=\"rgba(47,145,60,1.00)\">
-  					<tbody>
-  						<tr>
-    						<td colspan=\"2\" align=\"center\"><strong> Dati utente </strong></td>
-   						</tr>
-    					<tr>
-      						<td width=\"22%\"><strong>Nome</strong></td>
-      						<td width=\"78%\">&nbsp;</td>
-    					</tr>
-    					<tr>
-      						<td><strong>Cognome</strong></td>
-      						<td>&nbsp;</td>
-    					</tr>
-    					<tr>
-      						<td><strong>Matricola</strong></td>
-      						<td>&nbsp;</td>
-    					</tr>
-    					<tr>
-      						<td><strong>Facoltà</strong></td>
-      						<td>&nbsp;</td>
-    					</tr>
-   	 					<tr>
-      						<td><strong>Email</strong></td>
-      						<td>&nbsp;</td>
-    					</tr>
-    					<tr>
-      						<td><strong>Nuova mail</strong></td>
-      						<td>&nbsp;</td>
-    					</tr>
-    					<tr>
-      						<td><strong>Nome squadra</strong></td>
-      						<td>&nbsp;</td>
-    					</tr>
-    					<tr>
-      						<td><strong>Password</strong></td>
-      						<td>&nbsp;</td>
-    					</tr>
-    					<tr>
-      						<td><strong>Nuova password</strong></td>
-      						<td>&nbsp;</td>
-                  		</tr>
-					</tbody>
-				</table>
-				<img src=\"image/salvamodifiche.png\" alt=\"\" width=\"184\" height=\"43\" align=\"right\"/>
-			</div>
-		</div>
-		<!-- Fine contenitore -->
+		<footer>
+		</footer>
+		<!-- Fine footer -->
 	</body>
 </html>";
 ?>
