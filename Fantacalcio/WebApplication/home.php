@@ -14,9 +14,31 @@
         <link href=\"css/index.css\" rel=\"stylesheet\" type=\"text/css\">
 	</head>
 	<body>
-		<img src=\"image/logoLungoSMALL.png\" width=\"1120\" height=\"150\" alt=\"\"/>
-		<div id=\"menù\" style=\"float:left\" style=\"width:200\">
-			<div id=\"a\"><img src=\"image/areaUtente.png\" width=\"177,2\" height=\"59,1\" alt=\"\"/></div>
+	
+		<!--Immagine principale-->
+		<a href=\"home.php\">
+			<img src=\"image/logoLungoSMALL.png\" width=\"1120\" height=\"150\" alt=\"\"/>
+		</a>
+		<!--Tabella giornate-->
+		<div id=\"giornate\" style=\"float:center\">
+			<table style=\"width:100%\">
+				<tr>
+					<td align=\"center\">
+						<img src=\"image/giornate.png\" width=\"236,2\" height=\"35,4\" alt=\"\"/>
+					</td>
+				</tr>
+			</table>
+			<table border=\"1\" bordercolordark=\"black\">
+				<tr>
+					<!--Inserire riferimenti alle giornate e controllo per le giornate già giocate per la costruzione della tabella-->
+					<td width=\"30%\" height=\"30%\"><a>1<!--Inserisci giornata--></a></td>
+				</tr>
+			</table>
+		</div>
+		<div id=\"menù\" style=\"float:left\">
+			<a href=\"home.php\">
+				<div id=\"areaUtente\"><img src=\"image/areaUtente.png\" width=\"177,2\" height=\"59,1\" alt=\"\"/></div>
+			</a>
 			<div id=\"b\"><img src=\"image/squadra.png\" width=\"177,2\" height=\"59,1\" alt=\"\"/></div>
 			<div id=\"c\"><img src=\"image/mercato.png\" width=\"177,2\" height=\"59,1\" alt=\"\"></div>
 			<div id=\"d\"><img src=\"image/cerca.png\" width=\"177,2\" height=\"59,1\" alt=\"\"></div>
@@ -26,20 +48,7 @@
 		
 		</div>
 		<div id=\"corpo\" style=\"float:center\">
-			<table>
-				<tr>
-					<td>
-						<img src=\"image/giornate.png\" width=\"236,2\" height=\"35,4\" alt=\"\"/>
-					</td>
-				</tr>
-			</table>
-			<table>
-				<tr>
-					<!--Inserire riferimenti alle giornate e controllo per le giornate già giocate per la costruzione della tabella-->
-					<!--Inserire bordi alla tabella-->
-					<td><a></a></td>
-				</tr>
-			</table>
+			
 		</div>
 	</body>
 </html>";
