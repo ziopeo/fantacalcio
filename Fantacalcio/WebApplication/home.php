@@ -51,7 +51,49 @@
 		</div>
 		
 		<div id=\"corpo\" style=\"float:center\">
-			
+			<table width=\"73%\" border=\"1\" bordercolor=\"rgba(47,145,60,1.00)\">
+  				<tbody>
+  					<tr>
+    					<td colspan=\"2\" align=\"center\"><strong> Dati utente </strong></td>
+   					</tr>
+    				<tr>
+      					<td width=\"22%\"><strong>Nome</strong></td>
+      					<td width=\"78%\">&nbsp;</td>
+    				</tr>
+    				<tr>
+      					<td><strong>Cognome</strong></td>
+      					<td>&nbsp;</td>
+    				</tr>
+    				<tr>
+      					<td><strong>Matricola</strong></td>
+      					<td>&nbsp;</td>
+    				</tr>
+    				<tr>
+      					<td><strong>Facoltà</strong></td>
+      					<td>&nbsp;</td>
+    				</tr>
+   	 				<tr>
+      					<td><strong>Email</strong></td>
+      					<td>&nbsp;</td>
+    				</tr>
+    				<tr>
+      					<td><strong>Nuova mail</strong></td>
+      					<td>&nbsp;</td>
+    				</tr>
+    				<tr>
+      					<td><strong>Nome squadra</strong></td>
+      					<td>&nbsp;</td>
+    				</tr>
+    				<tr>
+      					<td><strong>Password</strong></td>
+      					<td>&nbsp;</td>
+    				</tr>
+    				<tr>
+      					<td><strong>Nuova password</strong></td>
+      					<td>&nbsp;</td>
+                    </tr>
+				</tbody>
+			</table>
 		</div>
 	</body>
 </html>";
