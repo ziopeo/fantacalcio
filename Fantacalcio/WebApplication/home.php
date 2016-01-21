@@ -51,7 +51,7 @@
 		</div>
 		
 		<div id=\"corpo\" style=\"float:center\">
-			<table width=\"73%\" border=\"1\" bordercolor=\"rgba(47,145,60,1.00)\">
+			<table width=\"79%\" border=\"1\" bordercolor=\"rgba(47,145,60,1.00)\">
   				<tbody>
   					<tr>
     					<td colspan=\"2\" align=\"center\"><strong> Dati utente </strong></td>
@@ -94,6 +94,7 @@
                     </tr>
 				</tbody>
 			</table>
+			<img src=\"image/salvamodifiche.png\" alt=\"\" width=\"184\" height=\"43\" align=\"right\"/>
 		</div>
 	</body>
 </html>";
