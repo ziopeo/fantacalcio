@@ -1,4 +1,5 @@
-<?php
+
+  <?php
 	echo "<!doctype html public>
 <html dir=\"ltr\" lang=\"IT\">
 	<head>
@@ -14,13 +15,33 @@
 	</head>
 	<body>
 		<img src=\"image/logoLungoSMALL.png\" width=\"1120\" height=\"150\" alt=\"\"/>
-		<div id=\"menù\">
+		<div id=\"menù\" style=\"float:left\" style=\"width:200\">
 			<div id=\"a\"><img src=\"image/areaUtente.png\" width=\"177,2\" height=\"59,1\" alt=\"\"/></div>
 			<div id=\"b\"><img src=\"image/squadra.png\" width=\"177,2\" height=\"59,1\" alt=\"\"/></div>
 			<div id=\"c\"><img src=\"image/mercato.png\" width=\"177,2\" height=\"59,1\" alt=\"\"></div>
 			<div id=\"d\"><img src=\"image/cerca.png\" width=\"177,2\" height=\"59,1\" alt=\"\"></div>
 			<div id=\"e\"><img src=\"image/logout.png\" width=\"177,2\" height=\"59,1\" alt=\"\"></div>
 		</div>
+		<div style=\"float:left\">
+		
+		</div>
+		<div id=\"corpo\" style=\"float:center\">
+			<table>
+				<tr>
+					<td>
+						<img src=\"image/giornate.png\" width=\"236,2\" height=\"35,4\" alt=\"\"/>
+					</td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<!--Inserire riferimenti alle giornate e controllo per le giornate già giocate per la costruzione della tabella-->
+					<!--Inserire bordi alla tabella-->
+					<td><a></a></td>
+				</tr>
+			</table>
+		</div>
 	</body>
 </html>";
 ?>
+
