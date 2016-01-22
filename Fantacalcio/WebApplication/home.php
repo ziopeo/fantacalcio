@@ -20,7 +20,7 @@
 		<header>
 			<!--Immagine principale-->
 			<a href=\"home.php\">
-				<img src=\"image/logoLungoSMALL.png\" width=\"1120\" height=\"150\" alt=\"\"/>
+				<img id=\"logo\" src=\"image/logoLungoSMALL.png\" alt=\"UFL - University Fanta League\"/>
 			</a>
 		
 			<!--Tabella giornate-->
