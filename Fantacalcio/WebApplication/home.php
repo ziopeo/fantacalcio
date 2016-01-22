@@ -1,9 +1,10 @@
 
-  <?php
+<?php
 	echo "<!doctype html public>
 <html dir=\"ltr\" lang=\"IT\">
 	<head>
 		<meta charset=\"UTF-8\">
+		<link href=\"styles/style.css\" rel=\"stylesheet\" type=\"text/css\">
         <meta name=\"description\" content=\"UFL - University Fanta League - website application per sfidare i tuoi compagni universitari in una fantalega\">
         <meta name=\"keywords\" content=\"università facoltà lega fantalega fantacalcio calcio soccer fantamilioni mercato calciatori\">
         <meta name=\"author\" content=\"Foresta Stefano, Franzese Gennaro, Paglialonga Giuseppe\">
@@ -14,6 +15,7 @@
         <link href=\"css/index.css\" rel=\"stylesheet\" type=\"text/css\">
 	</head>
 	<body>
+		<div id=\"total\">
 		<!-- header con titolo e giornte -->
 		<header>
 			<!--Immagine principale-->
@@ -64,8 +66,7 @@
 			</section>
 			<!-- Fine section -->
 			
-			<!-- Inizio footer corpoCentrale -->
-			<footer id=\"corpoCentrale\">
+			<!-- Inizio div corpo -->
 				<div id=\"corpo\" style=\"float:center\">
 					<table width=\"79%\" border=\"1\" bordercolor=\"rgba(47,145,60,1.00)\">
   						<tbody>
@@ -121,6 +122,7 @@
 		<footer>
 		</footer>
 		<!-- Fine footer -->
+		</div>
 	</body>
 </html>";
 ?>

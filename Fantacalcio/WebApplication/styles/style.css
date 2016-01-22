@@ -1,0 +1,9 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#total {
+	/* Container of all content */
+	width: 80%;
+	overflow: auto;
+	margin-left: 10%;
+}
