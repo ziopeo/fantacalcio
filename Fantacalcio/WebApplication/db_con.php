@@ -2,7 +2,9 @@
 	/* Connessione al database*/
 
 	$connect = mysql_connect("localhost","root","root");
-	
+	if($connect){
+		echo "<html><head></head><body>oooooooooo</body></html>";
+	}
 	/* in caso di fallimento della connesione */
 	if(!$connect){
 		die('Connessione fallita, errore: '.mysql_error());
