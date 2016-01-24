@@ -1,5 +1,4 @@
 <?php 
-	
 	/* apertura sessione e successiva inclusione del file per la connessione al database*/
 	session_start();
 	include ("db_con.php");
