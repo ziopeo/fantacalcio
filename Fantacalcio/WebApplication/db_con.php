@@ -1,7 +1,7 @@
 <?php
 /* Connessione al database*/
 
-$connect = mysql_connect("localhost","root","root");
+$connect = mysql_connect("localhost:8888","sterzo","sterzo");
 
 /* in caso di fallimento della connesione */
 if(!$connect){
