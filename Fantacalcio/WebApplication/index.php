@@ -1,9 +1,8 @@
 <?php
-	
+	/* non si collega */
+	session_start();
+	include("db_con.php");
 	echo"<!doctype html public>
-		<?php 
-			include(\"db_con.php\");
-		?>
 		<html dir=\"ltr\" lang=\"IT\">
 			<head>
 			<meta charset=\"UTF-8\">
@@ -24,7 +23,7 @@
 					<form name=\"login_form\" method=\"post\" action=\"login.php\">	
 						User &nbsp;&nbsp;&nbsp; <input type=\"text\" name=\"user_log\">
 						Password &nbsp;&nbsp;&nbsp; <input type=\"password\" name=\"pass_log\">
-						<input type=\"submit\" name=\"submit\" value=\"ACCEDI\">
+						<button>Accedi</button>
 					</form>
 					<br>
 					<br>
@@ -38,7 +37,7 @@
 						E-mail &nbsp;&nbsp;&nbsp; <input type=\"text\" name=\"email_reg\">
 						Password &nbsp;&nbsp;&nbsp; <input type=\"password\" name=\"pass_reg\">
 						<br>
-						<input type=\"submit\" name=\"submit\" value=\"REGISTRATI\">
+						<button>Registrati</button>
 					</form>
 				</div>
         	</div>
