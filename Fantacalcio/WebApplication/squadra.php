@@ -64,7 +64,11 @@
 							<img src=\"image/squadra.png\" width=\"177,2\" height=\"59,1\" alt=\"\"/>
 						</div>
 					</a>	
-					<div id=\"c\"><img src=\"image/mercato.png\" width=\"177,2\" height=\"59,1\" alt=\"\"></div>
+					<a href=\"mercato.php\">
+						<div id=\"c\">
+							<img src=\"image/mercato.png\" width=\"177,2\" height=\"59,1\" alt=\"\">
+						</div>
+					</a>
 					<div id=\"d\"><img src=\"image/cerca.png\" width=\"177,2\" height=\"59,1\" alt=\"\"></div>
 					<div id=\"e\"><img src=\"image/logout.png\" width=\"177,2\" height=\"59,1\" alt=\"\"></div>
 			
