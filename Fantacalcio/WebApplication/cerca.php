@@ -39,7 +39,7 @@
 					<table style="width:100%">
 						<tr>
 							<td align="center" bgcolor="#A4E4B9">
-								<img src="image/mercatot.png" width="472,4" height="70,8" alt="MERCATO"/>
+								<img src="image/cercat.png" width="472,4" height="70,8" alt="CERCA"/>
 							</td>
 						</tr>
 					</table>

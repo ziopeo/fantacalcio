@@ -67,9 +67,11 @@
 								<img src="image/mercato.png" width="177,2" height="59,1" alt="MERCATO">
 							</div>
 						</a>
-						<div id="d">
-							<img src="image/cerca.png" width="177,2" height="59,1" alt="">
-						</div>
+						<a href="cerca.php">
+							<div id="d">
+								<img src="image/cerca.png" width="177,2" height="59,1" alt="">
+							</div>
+						</a>
 						<div id="e">
 							<img src="image/logout.png" width="177,2" height="59,1" alt="">
 						</div>
@@ -90,6 +92,21 @@
 				<!-- Inizio div corpo -->
 				<div id="corpo" style="float:center">
 					
+					<!-- Tabella per visualizzazione rosa -->
+					<h1>
+						<center>
+							<strong>- ROSA -</strong>
+						</center>
+					</h1>
+					<table name="Rosa" width="100%" border="1" id="rosa">
+						<tr>
+							<td>Ruolo</td>
+							<td>Nome</td>
+							<td>Prezzo iniziale</td>
+							<td>Prezzo attuale</td>
+							<td>Squadra</td>
+						</tr>
+					</table>
 				</div>
 			</div>
 			<!-- Fine contenitore -->
