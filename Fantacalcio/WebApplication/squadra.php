@@ -23,14 +23,14 @@
 		
 				<!--Tabella giornate-->
 				<div id="giornate" style="float:center">
-					<table style="width:100%" border="1" bordercolordark="black">
+					<table style="width:100%" border="1" bordercolordark="black" >
 						<tr>
 							<td align="center">
 								<img src="image/giornate.png" width="236,2" height="35,4" alt="GIORNATE"/>
 							</td>
 						</tr>
 					</table>
-					<table border="1" bordercolordark="black">
+					<table border="1" bordercolordark="black" id="table_giornate">
 						<tr>
 							<!--Inserire riferimenti alle giornate e controllo per le giornate già giocate per la costruzione della tabella-->
 							<td width="30%" height="30%"><a>1<!--Inserisci giornata--></a></td>

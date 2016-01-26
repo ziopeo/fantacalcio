@@ -21,7 +21,7 @@
         	  	<div class="input">
 					
 					<!-- form per l'immissione dati -->
-					<form name="login_form" method="post" action="login.php">	
+					<form name="login_form" method="post" action="controller.php">	
 						User &nbsp;&nbsp;&nbsp; <input type="text" name="user_log">
 						Password &nbsp;&nbsp;&nbsp; <input type="password" name="pass_log">
 						<button>Accedi</button>
@@ -30,7 +30,7 @@
 					<br>
 					<br>
 					<strong>Registrati subito</strong>
-					<form name="registrazione_form" method="post" action="registrazione.php">
+					<form name="registrazione_form" method="post" action="controller.php">
 						Matricola &nbsp;&nbsp;&nbsp; <input type="text" name="matricola_reg">
 						Nome &nbsp;&nbsp;&nbsp; <input type="text" name="nome_reg">
 						Cognome &nbsp;&nbsp;&nbsp; <input type="text" name="cognome_reg">
@@ -43,4 +43,4 @@
 				</div>
         	</div>
 		</body>
-	</html>"
+	</html>
