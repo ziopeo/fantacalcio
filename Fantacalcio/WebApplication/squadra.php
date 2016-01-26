@@ -91,7 +91,7 @@
 			
 				<!-- Inizio div corpo -->
 				<div id="corpo" style="float:center">
-					
+
 					<!-- Tabella per visualizzazione rosa -->
 					<h1>
 						<center>
@@ -106,7 +106,67 @@
 							<td>Prezzo attuale</td>
 							<td>Squadra</td>
 						</tr>
+    					<tr name="row_g">
+							<td name="td_ruolo"></td>
+							<td name="td_nome"></td>
+    						<td name="td_iniziale"></td>
+    						<td name="td_finale"></td>
+    						<td name="td_squadra"></td>
+    					</tr>
 					</table>
+					<!-- fine tabella rosa -->
+
+
+					<hr align=”left” size=”2″ width=”300″ color=”green” noshade>
+					
+					<!-- inizio formazione -->
+					<h1>
+						<center>
+							<strong>- FORMAZIONE -</strong>
+						</center>
+					</h1>
+
+					<!-- form modulo -->
+					<center>
+						<form align="center" style="width:30%" method="post" action="squadra.php" name="form_modulo">
+							<br>
+							<fieldset align="center" name="field_modulo">
+								<legend>Scelta del modulo</legend>
+								<input type="radio" id="433" name="modulo" value="433"/>433
+								<input type="radio" id="343" name="modulo" value="343"/>343
+								<input type="radio" id="442" name="modulo" value="442"/>442
+								<input type="radio" id="352" name="modulo" value="352"/>352
+								<input type="radio" id="532" name="modulo" value="532"/>532
+								<input type="radio" id="541" name="modulo" value="541"/>541
+								
+							</fieldset>
+							<br>
+							<input type="submit">
+						</form>
+					</center>
+					<!-- fine formazione -->
+					<?php
+						$modulo = $_POST['modulo'];
+						switch ($modulo) {
+							case '433':
+								echo"a";
+								break;
+							case '343':
+								echo"b";
+								break;
+							case '442':
+								echo"c";
+								break;
+							case '352':
+								echo"d";
+								break;
+							case '541':
+								echo"e";
+								break;
+							default:
+								break;
+						}
+					?>
 				</div>
 			</div>
 			<!-- Fine contenitore -->
