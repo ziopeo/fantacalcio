@@ -149,7 +149,20 @@
 						$modulo = $_POST['modulo'];
 						switch ($modulo) {
 							case '433':
-								echo"a";
+								echo"
+									<table name=\"portieri\" id=\"portieri\" width=\"100%\" border=\"1\">
+
+									</table>
+									<table name=\"difensori\" id=\"difensori\" width=\"100%\" border=\"1\">
+										
+									</table>
+									<table name=\"centrocampisti\" id=\"centrocampisti\" width=\"100%\" border=\"1\">
+										
+									</table>
+									<table name=\"attaccanti\" id=\"attaccanti\" width=\"100%\" border=\"1\">
+										
+									</table>
+								";
 								break;
 							case '343':
 								echo"b";
