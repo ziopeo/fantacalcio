@@ -148,23 +148,35 @@
 					<?php
 						$modulo = $_POST['modulo'];
 						switch ($modulo) {
+
 							case '433':
 								echo"
+									<h1>
+										<center>
+											<strong> -Modulo 433- </strong>
+										</center>
+									</h1>
+
 									<!--Portieri-->
+									<h3>
+										<center>
+											<strong> -Portiere- </strong>
+										</center>
+									</h3>
 									<table name=\"portieri\" id=\"portieri\" width=\"100%\" border=\"1\">
 
 										<!--Titolari-->
 										<tr id=\"\" name=\"\">
 											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
 										</tr>
-
-										<!--Panchinari-->
-										<tr id=\"\" name=\"\">
-											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
-										</tr>
 									</table>
 
 									<!--Difensori-->
+									<h3>
+										<center>
+											<strong> -Difensori- </strong>
+										</center>
+									</h3>
 									<table name=\"difensori\" id=\"difensori\" width=\"100%\" border=\"1\">
 
 										<!--Titolari-->
@@ -174,15 +186,14 @@
 											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
 											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
 										</tr>
-
-										<!--Panchinari-->
-										<tr id=\"\" name=\"\">
-											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
-											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
-										</tr>
 									</table>
 
 									<!--Centrocampisti-->
+									<h3>
+										<center>
+											<strong> -Centrocampisti- </strong>
+										</center>
+									</h3>
 									<table name=\"centrocampisti\" id=\"centrocampisti\" width=\"100%\" border=\"1\">
 
 										<!--Titolari-->
@@ -191,15 +202,14 @@
 											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
 											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
 										</tr>
-
-										<!--Panchinari-->
-										<tr id=\"\" name=\"\">
-											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
-											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
-										</tr>
 									</table>
 
 									<!--Attaccanti-->
+									<h3>
+										<center>
+											<strong> -Attaccanti- </strong>
+										</center>
+									</h3>
 									<table name=\"attaccanti\" id=\"attaccanti\" width=\"100%\" border=\"1\">
 
 										<!--Titolari-->
@@ -208,26 +218,535 @@
 											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
 											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
 										</tr>
+									</table>
 
-										<!--Panchinari-->
+									<!--Panchinari-->
+									<h3>
+										<center>
+											<strong> -Panchina- </strong>
+										</center>
+									</h3>
+									<table name=\"attaccanti\" id=\"attaccanti\" width=\"100%\" border=\"1\">
 										<tr id=\"\" name=\"\">
+											<td>Por</td>
+											<td>Dif 1</td>
+											<td>Dif 2</td>
+											<td>Cen 1</td>
+											<td>Cen 2</td>
+											<td>Att 1</td>
+											<td>Att 2</td>
+										</tr>
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
 											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
 											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
 										</tr>
 									</table>
 								";
 								break;
+
 							case '343':
-								echo"b";
+								echo"
+									<h1>
+										<center>
+											<strong> -Modulo 343- </strong>
+										</center>
+									</h1>
+
+									<!--Portieri-->
+									<h3>
+										<center>
+											<strong> -Portiere- </strong>
+										</center>
+									</h3>
+									<table name=\"portieri\" id=\"portieri\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Difensori-->
+									<h3>
+										<center>
+											<strong> -Difensori- </strong>
+										</center>
+									</h3>
+									<table name=\"difensori\" id=\"difensori\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Centrocampisti-->
+									<h3>
+										<center>
+											<strong> -Centrocampisti- </strong>
+										</center>
+									</h3>
+									<table name=\"centrocampisti\" id=\"centrocampisti\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Attaccanti-->
+									<h3>
+										<center>
+											<strong> -Attaccanti- </strong>
+										</center>
+									</h3>
+									<table name=\"attaccanti\" id=\"attaccanti\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Panchinari-->
+									<h3>
+										<center>
+											<strong> -Panchina- </strong>
+										</center>
+									</h3>
+									<table name=\"attaccanti\" id=\"attaccanti\" width=\"100%\" border=\"1\">
+										<tr id=\"\" name=\"\">
+											<td>Por</td>
+											<td>Dif 1</td>
+											<td>Dif 2</td>
+											<td>Cen 1</td>
+											<td>Cen 2</td>
+											<td>Att 1</td>
+											<td>Att 2</td>
+										</tr>
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+								";
 								break;
+
 							case '442':
-								echo"c";
+								echo"
+									<h1>
+										<center>
+											<strong> -Modulo 442- </strong>
+										</center>
+									</h1>
+
+									<!--Portieri-->
+									<h3>
+										<center>
+											<strong> -Portiere- </strong>
+										</center>
+									</h3>
+									<table name=\"portieri\" id=\"portieri\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Difensori-->
+									<h3>
+										<center>
+											<strong> -Difensori- </strong>
+										</center>
+									</h3>
+									<table name=\"difensori\" id=\"difensori\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Centrocampisti-->
+									<h3>
+										<center>
+											<strong> -Centrocampisti- </strong>
+										</center>
+									</h3>
+									<table name=\"centrocampisti\" id=\"centrocampisti\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Attaccanti-->
+									<h3>
+										<center>
+											<strong> -Attaccanti- </strong>
+										</center>
+									</h3>
+									<table name=\"attaccanti\" id=\"attaccanti\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Panchinari-->
+									<h3>
+										<center>
+											<strong> -Panchina- </strong>
+										</center>
+									</h3>
+									<table name=\"attaccanti\" id=\"attaccanti\" width=\"100%\" border=\"1\">
+										<tr id=\"\" name=\"\">
+											<td>Por</td>
+											<td>Dif 1</td>
+											<td>Dif 2</td>
+											<td>Cen 1</td>
+											<td>Cen 2</td>
+											<td>Att 1</td>
+											<td>Att 2</td>
+										</tr>
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+								";
 								break;
+
 							case '352':
-								echo"d";
+								echo"
+									<h1>
+										<center>
+											<strong> -Modulo 352- </strong>
+										</center>
+									</h1>
+
+									<!--Portieri-->
+									<h3>
+										<center>
+											<strong> -Portiere- </strong>
+										</center>
+									</h3>
+									<table name=\"portieri\" id=\"portieri\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Difensori-->
+									<h3>
+										<center>
+											<strong> -Difensori- </strong>
+										</center>
+									</h3>
+									<table name=\"difensori\" id=\"difensori\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Centrocampisti-->
+									<h3>
+										<center>
+											<strong> -Centrocampisti- </strong>
+										</center>
+									</h3>
+									<table name=\"centrocampisti\" id=\"centrocampisti\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Attaccanti-->
+									<h3>
+										<center>
+											<strong> -Attaccanti- </strong>
+										</center>
+									</h3>
+									<table name=\"attaccanti\" id=\"attaccanti\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Panchinari-->
+									<h3>
+										<center>
+											<strong> -Panchina- </strong>
+										</center>
+									</h3>
+									<table name=\"attaccanti\" id=\"attaccanti\" width=\"100%\" border=\"1\">
+										<tr id=\"\" name=\"\">
+											<td>Por</td>
+											<td>Dif 1</td>
+											<td>Dif 2</td>
+											<td>Cen 1</td>
+											<td>Cen 2</td>
+											<td>Att 1</td>
+											<td>Att 2</td>
+										</tr>
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+								";
 								break;
+
+							case '532':
+								echo"
+									<h1>
+										<center>
+											<strong> -Modulo 532- </strong>
+										</center>
+									</h1>
+
+									<!--Portieri-->
+									<h3>
+										<center>
+											<strong> -Portiere- </strong>
+										</center>
+									</h3>
+									<table name=\"portieri\" id=\"portieri\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Difensori-->
+									<h3>
+										<center>
+											<strong> -Difensori- </strong>
+										</center>
+									</h3>
+									<table name=\"difensori\" id=\"difensori\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Centrocampisti-->
+									<h3>
+										<center>
+											<strong> -Centrocampisti- </strong>
+										</center>
+									</h3>
+									<table name=\"centrocampisti\" id=\"centrocampisti\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Attaccanti-->
+									<h3>
+										<center>
+											<strong> -Attaccanti- </strong>
+										</center>
+									</h3>
+									<table name=\"attaccanti\" id=\"attaccanti\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Panchinari-->
+									<h3>
+										<center>
+											<strong> -Panchina- </strong>
+										</center>
+									</h3>
+									<table name=\"attaccanti\" id=\"attaccanti\" width=\"100%\" border=\"1\">
+										<tr id=\"\" name=\"\">
+											<td>Por</td>
+											<td>Dif 1</td>
+											<td>Dif 2</td>
+											<td>Cen 1</td>
+											<td>Cen 2</td>
+											<td>Att 1</td>
+											<td>Att 2</td>
+										</tr>
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+								";
+								break;
+
 							case '541':
-								echo"e";
+								echo"
+									<h1>
+										<center>
+											<strong> -Modulo 541- </strong>
+										</center>
+									</h1>
+
+									<!--Portieri-->
+									<h3>
+										<center>
+											<strong> -Portiere- </strong>
+										</center>
+									</h3>
+									<table name=\"portieri\" id=\"portieri\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Difensori-->
+									<h3>
+										<center>
+											<strong> -Difensori- </strong>
+										</center>
+									</h3>
+									<table name=\"difensori\" id=\"difensori\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Centrocampisti-->
+									<h3>
+										<center>
+											<strong> -Centrocampisti- </strong>
+										</center>
+									</h3>
+									<table name=\"centrocampisti\" id=\"centrocampisti\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Attaccanti-->
+									<h3>
+										<center>
+											<strong> -Attaccanti- </strong>
+										</center>
+									</h3>
+									<table name=\"attaccanti\" id=\"attaccanti\" width=\"100%\" border=\"1\">
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+
+									<!--Panchinari-->
+									<h3>
+										<center>
+											<strong> -Panchina- </strong>
+										</center>
+									</h3>
+									<table name=\"attaccanti\" id=\"attaccanti\" width=\"100%\" border=\"1\">
+										<tr id=\"\" name=\"\">
+											<td>Por</td>
+											<td>Dif 1</td>
+											<td>Dif 2</td>
+											<td>Cen 1</td>
+											<td>Cen 2</td>
+											<td>Att 1</td>
+											<td>Att 2</td>
+										</tr>
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+									</table>
+								";
 								break;
 							default:
 								break;
