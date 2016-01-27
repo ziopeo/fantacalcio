@@ -150,17 +150,70 @@
 						switch ($modulo) {
 							case '433':
 								echo"
+									<!--Portieri-->
 									<table name=\"portieri\" id=\"portieri\" width=\"100%\" border=\"1\">
 
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+
+										<!--Panchinari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
 									</table>
+
+									<!--Difensori-->
 									<table name=\"difensori\" id=\"difensori\" width=\"100%\" border=\"1\">
-										
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+
+										<!--Panchinari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
 									</table>
+
+									<!--Centrocampisti-->
 									<table name=\"centrocampisti\" id=\"centrocampisti\" width=\"100%\" border=\"1\">
-										
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+
+										<!--Panchinari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
 									</table>
+
+									<!--Attaccanti-->
 									<table name=\"attaccanti\" id=\"attaccanti\" width=\"100%\" border=\"1\">
-										
+
+										<!--Titolari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
+
+										<!--Panchinari-->
+										<tr id=\"\" name=\"\">
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+											<td><input type=\"\" id=\"\" name=\"\" value=\"\"/></td>
+										</tr>
 									</table>
 								";
 								break;
