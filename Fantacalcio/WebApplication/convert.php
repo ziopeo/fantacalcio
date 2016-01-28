@@ -1,16 +1,9 @@
 
 <?php
- 
-
- 
-// Arrays we'll use later
+include 'db.php';
 $keys = array();
-$newArray = array();
 $arr= array();
-
-
 function peoCsvtoArray(){
-	global $keys, $arr;
 $handle = @fopen("quotazioni.txt", "r");
 if ($handle) {
 	$i=0;
@@ -25,6 +18,7 @@ if ($handle) {
 	 $i++;
  
 }
+
 if (!feof($handle)) {
         echo "Error: unexpected fgets() fail\n";
     }
@@ -33,39 +27,18 @@ if (!feof($handle)) {
 return $arr;
 }
 
-// Do it
+
 $data = peoCsvtoArray();
- 
-// Set number of elements (minus 1 because we shift off the first row)
-$count = count($data); //$count = count($data)-1;
- 
-// Bring it all together
-for ($j = 1; $j < $count; $j++) {
-  $d = array_combine($keys, $data[$j]);
-  $newArray[$j] = $d;
-}
- 
-//print_r($newArray);
-
-
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "UFL_PEO";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) 
-    die("Connection failed: " . $conn->connect_error);
 
 $count =count($data);
 for ($i=1; $i<=$count; $i++){
 $arr=$data[$i];
 
-$sql = "INSERT INTO Fantagiocatore(`idFantagiocatore`, `ruolo`, `nome`, `squadra`, `prezzoIniziale`, `prezzoAttuale`) VALUES (". $arr[0]." ,'". $arr[3]."','". $arr[1]."','". $arr[5]."','". $arr[6]. "','". $arr[4]."')";
-echo $sql . "\n";
-$result=$conn->query($sql);
+$sql = "INSERT INTO Giocatore(`idgiocatore`, `ruolo`, `nome`, `squadra`, `prezzoIniziale`, `prezzoAttuale`) VALUES ('". $arr[0]."' ,'". $arr[3]."','". $arr[1]."','". $arr[4]."',". $arr[5].",". $arr[6].")";
+ echo $today = date("Y-m-d H:00:00");  
+echo $sql;
+
+$result=mysqli_query($conn, $sql);
 }
 if ($result==0)
 echo "error 0 risultati";
