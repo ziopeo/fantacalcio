@@ -89,7 +89,7 @@
 			
 			<!-- Inizio div corpo -->
 				<div id="corpo" style="float:center">
-					<table width="79%" border="1" bordercolor="rgba(47,145,60,1.00)" id="table_dati">
+					<table width="79%" border="1" bordercolor="rgba(47,145,60,1.00)" id="table_dati" align="center">
   						<tbody>
   							<tr>
     							<td colspan="2" align="center"><strong> Dati utente </strong></td>
@@ -97,31 +97,31 @@
     						<tr>
       							<td width="22%"><strong>Nome</strong></td>
       							<td width="78%">
-      								<textarea rows="1" title="nome_t" style="resize:none" width="100%" id="nome_t" name="nome_t" value="<?php echo $_POST['nome']; ?>" readonly></textarea>
+      								<textarea rows="1" cols="54"  title="nome_t" style="resize:none" width="100%" id="nome_t" name="nome_t" value="<?php echo $_POST['nome']; ?>" readonly></textarea>
       							</td>
     						</tr>
     						<tr>
       							<td><strong>Cognome</strong></td>
       							<td>
-      								<textarea rows="1" title="cognome_t" style="resize:none" width="100%" id="cognome_t" name="cognome_t" value="<?php echo $_POST['cognome']; ?>" readonly></textarea>
+      								<textarea rows="1" cols="54" title="cognome_t" style="resize:none" width="100%" id="cognome_t" name="cognome_t" value="<?php echo $_POST['cognome']; ?>" readonly></textarea>
       							</td>
     						</tr>
     						<tr>
       							<td><strong>Matricola</strong></td>
       							<td>
-      								<textarea rows="1" title="matricola_t" style="resize:none" width="100%" id="matricola_t" name="matricola_t" value="<?php echo $_POST['matricola']; ?>" readonly></textarea>
+      								<textarea rows="1" cols="54"  title="matricola_t" style="resize:none" width="100%" id="matricola_t" name="matricola_t" value="<?php echo $_POST['matricola']; ?>" readonly></textarea>
       							</td>
     						</tr>
     						<tr>
       							<td><strong>Facoltà</strong></td>
       							<td>
-      								<textarea rows="1" title="facolta_t" style="resize:none" width="100%" id="facolta_t" name="facolta_t" value="<?php echo $_POST['facolta']; ?>" readonly></textarea>
+      								<textarea rows="1" cols="54"  title="facolta_t" style="resize:none" width="100%" id="facolta_t" name="facolta_t" value="<?php echo $_POST['facolta']; ?>" readonly></textarea>
       							</td>
     						</tr>
    	 						<tr>
       							<td><strong>Email</strong></td>
       							<td>
-      								<textarea rows="1" title="email_t" style="resize:none" width="100%" id="email_t" name="email_t" value="<?php echo $_POST['email']; ?>" readonly></textarea>
+      								<textarea rows="1" cols="54"  title="email_t" style="resize:none" width="100%" id="email_t" name="email_t" value="<?php echo $_POST['email']; ?>" readonly></textarea>
       							</td>
     						</tr>
     						<tr>
@@ -132,13 +132,13 @@
     						<tr>
       							<td><strong>Nome squadra</strong></td>
       							<td>
-      								<textarea rows="1" title="squadra_t" style="resize:none" width="100%" id="squadra_t" name="squadra_t" value="<?php echo $_POST['squadra_t']; ?>" readonly></textarea>
+      								<textarea rows="1" cols="54"  title="squadra_t" style="resize:none" width="100%" id="squadra_t" name="squadra_t" value="<?php echo $_POST['squadra_t']; ?>" readonly></textarea>
       							</td>
     						</tr>
     						<tr>
       							<td><strong>Password</strong></td>
       							<td>
-      								<textarea rows="1" title="pass_t" style="resize:none" width="100%" id="pass_t" name="pass_t" value="<?php echo $_POST['pass']; ?>" readonly></textarea>
+      								<textarea rows="1" cols="54"  title="pass_t" style="resize:none" width="100%" id="pass_t" name="pass_t" value="<?php echo $_POST['pass']; ?>" readonly></textarea>
       							</td>
     						</tr>
     						<tr>
