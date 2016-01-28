@@ -35,10 +35,11 @@
 							$giornate = 39/*$_POST['giornate']*/;
 							$count = 1;
 							while($count<$giornate){
-								echo"
+								echo"	
 									<td width=\"10%\" height=\"30%\">
 										<a href=\"giornata.php\">" . $count . "</a>
-									</td>";
+									</td>
+									";
 								$count++;
 							}
 						?>
@@ -104,7 +105,64 @@
 						<strong>- Classifica Ateneo -</strong>
 					</center>
 				</h1>
-				
+				<br>
+				<table width="79%" border="1" bordercolor="rgba(47,145,60,1.00)" id="table_cateneo" align="center">
+					<tr>
+						<td>Posizione</td>
+						<td>Squadra</td>
+						<td>Allenatore</td>
+						<td>Punteggio</td>
+					</tr>
+
+					<!--Costruzione righe classifica ateneo-->
+					<?php
+						$giornate = 39/*$_POST['giornate']*/;
+						$count = 1;
+						while($count<$giornate){
+							echo"
+								
+								";
+							$count++;
+						}
+					?>
+				</table>
+				<br>
+				<br>
+
+				<!--Classifica facoltà-->
+				<h1>
+					<center>
+						<strong>- Classifica Facoltà -</strong>
+					</center>
+				</h1>
+				<br>
+				<table width="79%" border="1" bordercolor="rgba(47,145,60,1.00)" id="table_cfacolta" align="center">
+					<tr>
+						<td>Posizione</td>
+						<td>Squadra</td>
+						<td>Allenatore</td>
+						<td>Punteggio</td>
+					</tr>
+				</table>
+				<br>
+				<br>
+
+				<!--Formazione giornata scelta-->
+				<h1>
+					<center>
+						<strong>- Formazione -</strong>
+					</center>
+				</h1>
+				<br>
+				<table width="79%" border="1" bordercolor="rgba(47,145,60,1.00)" id="table_formazioneg" align="center">
+					<tr>
+						<td>Ruolo</td>
+						<td>Nome</td>
+						<td>Punteggio</td>
+					</tr>
+				</table>
+				<br>
+				<br>
 			</div>
 		
 			<!-- Fine contenitore -->

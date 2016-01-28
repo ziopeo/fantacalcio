@@ -35,7 +35,11 @@
 								$giornate = 39/*$_POST['giornate']*/;
 								$count = 1;
 								while($count<$giornate){
-									echo"<td width=\"10%\" height=\"30%\"><a>" . $count . "</a></td>";
+									echo"
+										<td width=\"10%\" height=\"30%\">
+											<a href=\"giornata.php\">" . $count . "</a>
+										</td>
+										";
 									$count++;
 								}
 							?>
@@ -754,6 +758,13 @@
 								";
 								break;
 							default:
+								echo"
+									<h2>
+										<center>
+											<strong>Effettuare selezione modulo</strong>
+										</center>
+									</h2>
+									";
 								break;
 						}
 					?>
