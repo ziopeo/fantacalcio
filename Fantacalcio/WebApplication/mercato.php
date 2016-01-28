@@ -122,6 +122,9 @@
 			</div>
 			<!-- Fine contenitore -->
 		</div>
+		<br>
+		<br>
+		<br>
 				<!-- Inizio footer -->
 		<div id="footer" name="footer" bgcolor="#A4E4B9">
 			<table style="width:100%">
