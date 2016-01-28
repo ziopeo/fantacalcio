@@ -92,6 +92,7 @@
 				<!-- Inizio div corpo -->
 				<div id="corpo" style="float:center">
 
+					<!--Section della ricerca-->
 					<section in="ricerca">
 						<!--Ricerca giocatore-->
 						<form name="r_giocatore" method="post" action="/search" style="width:30%">
@@ -119,6 +120,11 @@
   								<input type="submit" value="Ricerca">
   							</fieldset>
 						</form>
+					</section>
+
+					<!--Section dei risultati-->
+					<section in="risultati">
+
 					</section>
 				</div>
 			</div>

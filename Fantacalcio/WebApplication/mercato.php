@@ -91,7 +91,33 @@
 			
 				<!-- Inizio div corpo -->
 				<div id="corpo" style="float:center">
-					
+					<h1>
+						<center>
+							<strong>- Mercato -</strong>
+						</center>
+					</h1>
+					<table name="Mercato" width="100%" border="1" id="mercato">
+						<tr>
+							<td>Ruolo</td>
+							<td>Nome</td>
+							<td>Prezzo iniziale</td>
+							<td>Prezzo attuale</td>
+							<td>Squadra</td>
+							<td>Acquista</td>
+						</tr>
+						<form method="post" action="" name="form_acquisto">
+    						<tr name="row_g">
+								<td name="td_mruolo"></td>
+								<td name="td_mnome"></td>
+    							<td name="td_miniziale"></td>
+    							<td name="td_mfinale"></td>
+    							<td name="td_msquadra"></td>
+    							<td name="td_macquista">
+    								<input type="submit" id="acquista" name="acquista" value="Acquista">
+    							</td>
+    						</tr>
+    					</form>
+					</table>
 				</div>
 			</div>
 			<!-- Fine contenitore -->
