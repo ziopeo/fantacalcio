@@ -7,10 +7,8 @@
         <meta name="keywords" content="università facoltà lega fantalega fantacalcio calcio soccer fantamilioni mercato calciatori">
         <meta name="author" content="Foresta Stefano, Franzese Gennaro, Paglialonga Giuseppe">
         <meta name="copyright" content="Foresta Stefano, Franzese Gennaro, Paglialonga Giuseppe, UFL">
-        <meta name="robots" content="home,follow">
-		<title>UFL - Home</title>
-		<link href="css/principale.css" rel="stylesheet" type="text/css">
-        <link href="css/index.css" rel="stylesheet" type="text/css">
+        <meta name="robots" content="cerca,follow">
+		<title>UFL - Cerca</title>
 	</head>
 	<body>
 		<div id="total">
@@ -32,8 +30,15 @@
 					</table>
 					<table border="1" bordercolordark="black" id="table_giornate">
 						<tr>
-							<!--Inserire riferimenti alle giornate e controllo per le giornate già giocate per la costruzione della tabella-->
-							<td width="30%" height="30%"><a>1<!--Inserisci giornata--></a></td>
+							<!--Costruzione row giornate-->
+							<?php
+								$giornate = 39/*$_POST['giornate']*/;
+								$count = 1;
+								while($count<$giornate){
+									echo"<td width=\"10%\" height=\"30%\"><a>" . $count . "</a></td>";
+									$count++;
+								}
+							?>
 						</tr>
 					</table>
 					<table style="width:100%">

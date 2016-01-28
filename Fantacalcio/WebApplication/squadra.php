@@ -754,7 +754,6 @@
 								";
 								break;
 							default:
-								echo"yo";
 								break;
 						}
 					?>
