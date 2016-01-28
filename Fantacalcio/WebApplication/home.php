@@ -52,6 +52,7 @@
 					</tr>
 				</table>
 			</div>
+			<!--Fine div tabella giornate-->
 		</header>
 		<!--Fine header-->
 		
