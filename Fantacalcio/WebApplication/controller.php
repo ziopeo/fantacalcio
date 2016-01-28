@@ -10,9 +10,6 @@ switch($_POST['metodo']){
 			break;
 	case 'controlla_login';
 			break;
-	case'getInfoUser';
-		$result=getInfoUser($POST['matricola']);
-		
 	default:
 		//homepage default
 		include 'corpo.php';

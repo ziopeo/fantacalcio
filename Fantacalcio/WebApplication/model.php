@@ -1,23 +1,23 @@
 <?php
-
+include 'db.php';
 function getModelGiocatori() 
 {
+
 $sql='SELECT * FROM Giocatore';
 return mysqli_query($conn, $sql); 
 }
-
-function getSquadra()
+function caricaGiocatori($arr)
 {
-  $sql='SELECT * FROM Squadre';
-  return mysqli_query($conn, $sql); 
+$queryInserisci = "INSERT INTO Giocatore(`idgiocatore`, `ruolo`, `nome`, `squadra`, `prezzoIniziale`, `prezzoAttuale`) VALUES ('". $arr[0]."' ,'". $arr[3]."','". $arr[1]."','". $arr[4]."',". $arr[5].",". $arr[6].")";
+return mysqli_query($conn, $queryInserisci);
+
 }
 
-function getInfoUser($username)
+function creaArchivioGiocatori()
 {
-  $sql="SELECT * FROM Utente WHERE  username = '". $username . "'" ;
-  return mysqli_query($conn, $sql); 
-}
-
-
-
+	$idAteneo=getIdAteneoCorrente();
+	$today = date("Y-m-d H:00:00");
+$querycreaArchivio("INSERT INTO `ArchivioLega`(`lega`, `dataUpload`) VALUES (". $idAteneo . ",'". $today ."')";
+$idArchivioLega= $conn->insert_id;
+return $idArchivioLega;
 ?>
