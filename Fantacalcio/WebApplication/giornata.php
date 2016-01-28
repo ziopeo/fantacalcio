@@ -102,7 +102,7 @@
 				<!--Classifica ateneo-->
 				<h1>
 					<center>
-						<strong>- Classifica Ateneo -</strong>
+						<strong>- Classifica Ateneo TOP 20 -</strong>
 					</center>
 				</h1>
 				<br>
@@ -116,11 +116,23 @@
 
 					<!--Costruzione righe classifica ateneo-->
 					<?php
-						$giornate = 39/*$_POST['giornate']*/;
 						$count = 1;
-						while($count<$giornate){
+						while($count<21){
+							/*echo"
+								<tr>
+									<td>Posizione".$posizione."</td>
+									<td>Squadra".$squadra."</td>
+									<td>Allenatore".$allenatore."</td>
+									<td>Punteggio".$punteggio."</td>
+								</tr>
+								";*/
 							echo"
-								
+								<tr>
+									<td>Posizione</td>
+									<td>Squadra</td>
+									<td>Allenatore</td>
+									<td>Punteggio</td>
+								</tr>
 								";
 							$count++;
 						}
@@ -143,6 +155,30 @@
 						<td>Allenatore</td>
 						<td>Punteggio</td>
 					</tr>
+
+					<!--Costruzione righe classifica facoltà-->
+					<?php
+						$count = 1;
+						while($count<5/*$nsquadre*/){
+							/*echo"
+								<tr>
+									<td>Posizione".$posizione."</td>
+									<td>Squadra".$squadra."</td>
+									<td>Allenatore".$allenatore."</td>
+									<td>Punteggio".$punteggio."</td>
+								</tr>
+								";*/
+							echo"
+								<tr>
+									<td>Posizione</td>
+									<td>Squadra</td>
+									<td>Allenatore</td>
+									<td>Punteggio</td>
+								</tr>
+								";
+							$count++;
+						}
+					?>
 				</table>
 				<br>
 				<br>
@@ -160,6 +196,28 @@
 						<td>Nome</td>
 						<td>Punteggio</td>
 					</tr>
+
+					<!--Costruzione righe formazione-->
+					<?php
+						$count = 1;
+						while($count<18){
+							/*echo"
+								<tr>
+									<td>Ruolo".$ruolo."</td>
+									<td>Nome".$nome."</td>
+									<td>Punteggio".$punteggio_g."</td>
+								</tr>
+								";*/
+							echo"
+								<tr>
+									<td>Ruolo</td>
+									<td>Nome</td>
+									<td>Punteggio</td>
+								</tr>
+								";
+							$count++;
+						}
+					?>
 				</table>
 				<br>
 				<br>

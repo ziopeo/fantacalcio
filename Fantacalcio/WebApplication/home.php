@@ -97,6 +97,7 @@
 			
 			<!-- Inizio div corpo -->
 				<div id="corpo" style="float:center">
+					<!--Tabella utente-->
 					<table width="79%" border="1" bordercolor="rgba(47,145,60,1.00)" id="table_dati" align="center">
   						<tbody>
   							<tr>
