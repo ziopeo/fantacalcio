@@ -24,18 +24,18 @@
 				<div id="menù" style="float:left">
 
 					<!--Inserire i collegamenti che modificano la pagina-->
-					<a href="">
-						<div id="areaUtente">
-							<img src="image/uploadFile.png" width="177,2" height="59,1" alt="AREA UTENTE"/>
+					<a href="admin.php?scelta=load">
+						<div id="upload">
+							<img src="image/uploadFile.png" width="177,2" height="59,1" alt="UPLOAD"/>
 						</div>
 					</a>
-					<a href="">
-						<div id="b">
+					<a href="admin.php?scelta=gestione">
+						<div id="gestioneLega">
 							<img src="image/gestioneLega.png" width="177,2" height="59,1" alt="GESTIONE LEGA"/>
 						</div>
 					</a>
-					<a href="">
-						<div id="d">
+					<a href="admin.php?scelta=cerca">
+						<div id="cerca">
 							<img src="image/cerca.png" width="177,2" height="59,1" alt="CERCA">
 						</div>
 					</a>
@@ -61,7 +61,36 @@
 
 			<!-- Inizio div corpo -->
 			<div id="corpo" style="float:center">
+				<?php
+					$scelta = $_GET["scelta"];
+					switch ($scelta) {
 
+						/*caso upload file*/
+						case 'load':
+							echo'
+								aaaaaaa
+							';
+							break;
+
+						/*caso gestione leghe*/
+						case'gestione':
+							echo'
+								bbbbbbbb
+							';
+							break;
+
+						/*caso cerca*/
+						case'cerca':
+							echo'
+								ccccccccccc
+							';
+							break;
+
+						default:
+							# code...
+							break;
+					}
+				?>
 			</div>
 			<!-- Fine contenitore -->
 		</section>
@@ -69,6 +98,9 @@
 		
 
 		</div>
+		<br>
+		<br>
+		<br>
 		<br>
 		<br>
 		<br>
