@@ -35,10 +35,11 @@
 							$giornate = 39/*$_POST['giornate']*/;
 							$count = 1;
 							while($count<$giornate){
-								echo"
-									<td width=\"10%\" height=\"30%\">
-										<a href=\"giornata.php\">" . $count . "</a>
-									</td>";
+								echo'	
+									<td width="10%" height="30%">
+										<a href="giornata.php?giornata='.$count.'">' . $count . '</a>
+									</td>
+									';
 								$count++;
 							}
 						?>
