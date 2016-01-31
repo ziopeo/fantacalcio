@@ -63,6 +63,7 @@
 			<div id="corpo" style="float:center">
 				<?php
 					$scelta = $_GET["scelta"];
+					$nome = $_GET["nome"];
 					switch ($scelta) {
 
 						/*caso upload file*/
@@ -85,9 +86,32 @@
 								ccccccccccc
 							';
 							break;
-
+						case'name':
+							echo'
+								<h1>
+									<strong>
+										<center>Benvenuto '.$nome.'</center>
+									</strong>
+								</h1>
+								<br>
+								<p>
+									<center>
+										Questo è il pannello di controllo che ti permetterà di gestire le varie leghe e il caricamento dei file che serviranno ai tuoi iscritti per intraprendere la carriera di Fantallenatore
+									</center>
+								</p>
+								<br>
+								<p>
+									<center>
+										<h2>
+											Sul lato sinistro trovi il menù di navigazione.<br>
+										</h2>
+										- Con <strong>Upload file</strong> potrai caricare i file che permetteranno agli iscritti di avere a disposizione la lista dei giocatori disponibile per il mercato e i file che serviranno per il calcolo del punteggio di ogni giornata.<br>
+										- Con <strong>Gestione leghe</strong> potrai gestire la lega principale, ossia la Lega Ateneo, e le varie leghe di facoltà(es. aprire e chiudere il mercato, calcolare le giornate...).<br>
+										- Con <strong>Cerca</strong> potrai cercare rapidamente una lega, una squadra o un allenatore.<br>
+									</center>
+								</p>
+							';
 						default:
-							# code...
 							break;
 					}
 				?>
@@ -102,7 +126,7 @@
 		<br>
 		<br>
 		<!-- Inizio footer -->
-		<div id="footer" name="footer" bgcolor="#A4E4B9">
+		<div id="footer" name="footer" bgcolor="#A4E4B9" style="bottom:-1000">
 			<table style="width:100%">
 				<tr>
 					<td align="center" bgcolor="#A4E4B9">

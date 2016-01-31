@@ -229,7 +229,7 @@
 		<br>
 		<br>
 		<!-- Inizio footer -->
-		<div id="footer" name="footer" bgcolor="#A4E4B9">
+		<div id="footer" name="footer" bgcolor="#A4E4B9"style="bottom:-1300">
 			<table style="width:100%">
 				<tr>
 					<td align="center" bgcolor="#A4E4B9">

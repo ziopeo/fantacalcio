@@ -18,29 +18,35 @@
 		<body>
         	<div class="back_imgIndex" style="float:center">
 				<img id="logo" src="image/logoLungoSMALL.png" alt="UFL - University Fanta League"/>
-        	  	<div class="input">
+        	  	<div class="input" align="center">
 					
 					<!-- form per l'immissione dati -->
 					<form name="login_form" method="post" action="controller.php">
-						<input type="hidden" name="metodo" value="controlla_login">	
-						User &nbsp;&nbsp;&nbsp; <input type="text" name="user_log">
-						Password &nbsp;&nbsp;&nbsp; <input type="password" name="pass_log">
-						<button>Accedi</button>
+						<fieldset style="width:30%">
+							<input type="hidden" name="metodo" value="controlla_login">	
+							User: &nbsp;&nbsp;&nbsp; <input type="text" name="user_log"><br>
+							Password: &nbsp;&nbsp;&nbsp; <input type="password" name="pass_log"><br>
+							<br>
+							<button>Accedi</button>
+						</fieldset>
 					</form>
 					<br>
 					<br>
 					<br>
+
 					<strong>Registrati subito</strong>
 					<form name="registrazione_form" method="post" action="controller.php">
-						<input type="hidden" name="metodo" value="controlla_registrazione">
-						Matricola &nbsp;&nbsp;&nbsp; <input type="text" name="matricola_reg">
-						Nome &nbsp;&nbsp;&nbsp; <input type="text" name="nome_reg">
-						Cognome &nbsp;&nbsp;&nbsp; <input type="text" name="cognome_reg">
-						Facoltà &nbsp;&nbsp;&nbsp; <input type="text" name="facolta_reg">
-						E-mail &nbsp;&nbsp;&nbsp; <input type="text" name="email_reg">
-						Password &nbsp;&nbsp;&nbsp; <input type="password" name="pass_reg">
-						<br>
-						<button>Registrati</button>
+						<fieldset style="width:30%">
+							<input type="hidden" name="metodo" value="controlla_registrazione">
+							Matricola: &nbsp;&nbsp;&nbsp; <input type="text" name="matricola_reg"><br>
+							Nome: &nbsp;&nbsp;&nbsp; <input type="text" name="nome_reg"><br>
+							Cognome: &nbsp;&nbsp;&nbsp; <input type="text" name="cognome_reg"><br>
+							Facoltà: &nbsp;&nbsp;&nbsp; <input type="text" name="facolta_reg"><br>
+							E-mail: &nbsp;&nbsp;&nbsp; <input type="text" name="email_reg"><br>
+							Password: &nbsp;&nbsp;&nbsp; <input type="password" name="pass_reg"><br>
+							<br>
+							<button>Registrati</button>
+						</fieldset>
 					</form>
 				</div>
         	</div>
