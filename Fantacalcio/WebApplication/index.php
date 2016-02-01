@@ -43,6 +43,7 @@
 							Cognome: &nbsp;&nbsp;&nbsp; <input type="text" name="cognome_reg"><br>
 							Facoltà: &nbsp;&nbsp;&nbsp; <input type="text" name="facolta_reg"><br>
 							E-mail: &nbsp;&nbsp;&nbsp; <input type="text" name="email_reg"><br>
+							Squadra: &nbsp;&nbsp;&nbsp; <input type="text" name="squadra_reg"><br>
 							Password: &nbsp;&nbsp;&nbsp; <input type="password" name="pass_reg"><br>
 							<br>
 							<button>Registrati</button>
