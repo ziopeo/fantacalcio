@@ -41,9 +41,22 @@
 							Matricola: &nbsp;&nbsp;&nbsp; <input type="text" name="matricola_reg"><br>
 							Nome: &nbsp;&nbsp;&nbsp; <input type="text" name="nome_reg"><br>
 							Cognome: &nbsp;&nbsp;&nbsp; <input type="text" name="cognome_reg"><br>
-							Facoltà: &nbsp;&nbsp;&nbsp; <input type="text" name="facolta_reg"><br>
-							E-mail: &nbsp;&nbsp;&nbsp; <input type="text" name="email_reg"><br>
+
+							<!--Lista facoltà-->
+							<?php
+								include('controller.php');
+								include('model.php');
+								echo'<select name="metodo" id="metodo" value="lista_facolta">';
+								$return_f = 1/*valore di ritorno*/;
+								while(1/*numero di volte che gira*/){
+									echo'<option value="'.$return_f[$i].'"> '.$return_f[$i].'</option>';
+								}
+							?>
+
 							Squadra: &nbsp;&nbsp;&nbsp; <input type="text" name="squadra_reg"><br>
+							E-mail: &nbsp;&nbsp;&nbsp; <input type="text" name="email_reg"><br>
+							
+							<!--Facoltà: &nbsp;&nbsp;&nbsp; <input type="text" name="facolta_reg"><br>-->
 							Password: &nbsp;&nbsp;&nbsp; <input type="password" name="pass_reg"><br>
 							<br>
 							<button>Registrati</button>
