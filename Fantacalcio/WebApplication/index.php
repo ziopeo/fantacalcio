@@ -1,7 +1,7 @@
 <?php
 	/* non si collega */
 	session_start();
-	include("db_con.php");
+	include("db.php");
 	include('controller.php');
 	include('model.php');
 ?>	
