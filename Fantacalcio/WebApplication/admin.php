@@ -90,7 +90,12 @@
 						/*caso gestione leghe*/
 						case'gestione':
 							echo'
-								bbbbbbbb
+								<form name="open_m" method="post" action="admin.php?scelta=gestione">
+									<input type="submit" value="Apri mercato">
+								</form>
+								<form name="close_m" method="post" action="admin.php?scelta=gestione">
+									<input type="submit" value="Chiudi mercato">
+								</form>
 							';
 							break;
 
