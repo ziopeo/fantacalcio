@@ -104,8 +104,8 @@
 					<!--Section della ricerca-->
 					<section in="ricerca">
 						<!--Ricerca giocatore-->
-						<form name="r_giocatore" method="post" action="/search" style="width:30%">
- 							<fieldset align="center" name="field_modulo">	
+						<form name="r_giocatore" method="post" action="cerca.php" style="width:30%">
+ 							<fieldset align="center" name="field_cerca_g">	
  								<legend> Ricerca giocatore: </legend>
     							<input type="search" autocomplete="on" placeholder="nome,cognome" name="keyword_g" required maxlength="50">
   								<input type="submit" value="Ricerca">
@@ -113,8 +113,8 @@
 						</form>
 
 						<!--Ricerca squadra-->
-						<form name="r_squadra" method="post" action="/search" style="width:30%">
- 							<fieldset align="center" name="field_modulo">	
+						<form name="r_squadra" method="post" action="cerca.php" style="width:30%">
+ 							<fieldset align="center" name="field_cerca_s">	
  								<legend> Ricerca squadra: </legend>
     							<input type="search" autocomplete="on" placeholder="nome squadra" name="keyword_s" required maxlength="50">
   								<input type="submit" value="Ricerca">
@@ -122,8 +122,8 @@
 						</form>
 
 						<!--Ricerca utente-->
-						<form name="r_utente" method="post" action="/search" style="width:30%">
- 							<fieldset align="center" name="field_modulo">	
+						<form name="r_utente" method="post" action="cerca.php" style="width:30%">
+ 							<fieldset align="center" name="field_cerca_u">	
  								<legend> Ricerca utente: </legend>
     							<input type="search" autocomplete="on" placeholder="nome utente" name="keyword_u" required maxlength="50">
   								<input type="submit" value="Ricerca">
