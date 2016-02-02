@@ -2,7 +2,9 @@
 	/* non si collega */
 	session_start();
 	include("db_con.php");
-?>
+	include('controller.php');
+	include('model.php');
+?>	
 	<!doctype html public>
 		<html dir="ltr" lang="IT">
 			<head>
@@ -44,8 +46,7 @@
 
 							<!--Lista facoltà-->
 							<?php
-								include('controller.php');
-								include('model.php');
+								
 								echo'<select name="metodo" id="metodo" value="lista_facolta">';
 								$return_f = 1/*valore di ritorno*/;
 								while(1/*numero di volte che gira*/){
