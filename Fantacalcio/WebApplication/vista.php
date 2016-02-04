@@ -1,18 +1,32 @@
 
 <?php 
-//include 'head.php';
-//stampa risulta
-function stampaGiocatori($giocatori)
+function getCorpoGiornate()
 {
-if (mysqli_num_rows($giocatori) > 0) {
-    while($row = mysqli_fetch_assoc($giocatori)) {
-        echo "id: " . $row['idGiocatore']. " - Name: " . $row['nome']. "<br>";
-
-    }
-} else {
-    echo "0 results";
+    $corpo='';;
+    $giornate = 37;//=getNumeroGiornate();
+    for($i=0;$i<$giornate;$i++)
+        echo '<td><a href="controller.php">' . $i. '</a></td>';
 }
-mysqli_free_result($giocatori);
+
+
+
+function stampaFormazioniPage(){
+	include 'head.php';
+include 'bodyFormazionePage.php';
+include 'header.php';
+
+include 'sidebar.php';
+include 'formazioni.php'; 
+include 'footer.php';
+}
+function stampaHomePage()
+{
+include 'head.php';
+include 'header.php';
+include 'corpoBody.php';
+include 'sidebar.php';
+include 'login.php'; 
+include 'footer.php';
 }
 ?>
 	

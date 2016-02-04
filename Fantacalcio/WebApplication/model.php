@@ -2,43 +2,57 @@
 
 function getModelGiocatori() 
 { 
-
-$sql="SELECT * FROM Giocatore";
-$result= mysqli_query($conn, $sql);
-return $result;
+	$sql="SELECT * FROM Giocatore";
+	$result= mysqli_query($conn, $sql);
+	return $result;
 }
 
 function caricaGiocatori($giocatori)
 {
-$idArchivioLega=creaArchivioLega();
-for ($i=1; $i<=count($giocatori); $i++){
-$arr=$giocatori[$i];
-$conn=getDatabase();
-echo $arr[0].  $arr[1]."','". $arr[2]."','". $arr[3]."',". $arr[4].",". $arr[5];
-echo $queryInserisci = 'INSERT INTO Giocatore(`idgiocatore`, `ruolo`, `nome`, `squadra`, `prezzoIniziale`, `prezzoAttuale`) VALUES ('. $arr[0].' ,"'. $arr[2].'","'. $arr[1].'","'. $arr[4].'",'. $arr[5].','. $arr[6].')';
-echo $queryArchivia='INSERT INTO `GiocatoreArchiviato`(`archivioLega`, `giocatore`) VALUES ('. $idArchivioLega .','.$arr[0]. ')'; 
- mysqli_query($conn, $queryInserisci);
-
-mysqli_query($conn, $queryArchivia) or die ("Errore queryArchivia\n ");
+	$idArchivioLega=creaArchivioLega();
+	for ($i=1; $i<=count($giocatori); $i++){
+		$arr=$giocatori[$i];
+		$conn=getDatabase();	
+		echo $arr[0].  $arr[1]."','". $arr[2]."','". $arr[3]."',". $arr[4].",". $arr[5];
+		echo $queryInserisci = 'INSERT INTO Giocatore(`idgiocatore`, `ruolo`, `nome`, `squadra`, `prezzoIniziale`, `prezzoAttuale`) VALUES ('. $arr[0].' ,"'. $arr[2].'","'. $arr[1].'","'. $arr[4].'",'. $arr[5].','. $arr[6].')';
+		echo $queryArchivia='INSERT INTO `GiocatoreArchiviato`(`archivioLega`, `giocatore`) VALUES ('. $idArchivioLega .','.$arr[0]. ')'; 
+ 		mysqli_query($conn, $queryInserisci) or die ("Errore queryInserisci\n ");
+		mysqli_query($conn, $queryArchivia) or die ("Errore queryArchivia\n ");
 }
 
 }
 function getSquadreTotale()
 {
-
+	
 	$sql="SELECT DISTINCT `squadra` FROM `Giocatore` " or die ("Errore query verifica admin\n ");
 	$conn=getDatabase();
-	$result= mysqli_query($conn, $sql);
-	echo json_encode($result);
+	$result= mysqli_query($conn, $sql)or die ("Errore querySquadre\n ");
+	//echo json_encode($result);
 return $result;	
 }
-function getSquadreGiocatori($squadra)
+
+function jsonparentesidue($result)
+
+{	
+			while($row=mysqli_fetch_assoc($result))
+				$arr[]=$row;
+			$out="";
+	$out='[';
+	for($i=0;$i<count($arr);$i++)
+		if($i==count($arr)-1) 
+			$out.=  '{"nome":"' . $arr[$i]['nome']. '"}';
+		else $out.=  '{"nome":"' . $arr[$i]['nome']. '"},';
+		
+		$out.=']';
+	print_r($arr);
+	return $out;
+}
+function getGiocatoriSquadra($squadra)
 {
 	$sql="SELECT `idGiocatore`, `ruolo`, `nome`, `squadra`, `prezzoIniziale`, `prezzoAttuale` FROM `Giocatore` WHERE squadra= '$squadra'" or die ("Errore query verifica admin\n ");
 	$conn=getDatabase();
 	$result= mysqli_query($conn, $sql);
-	echo json_encode($result);
-return $result;	
+	return jsonparentesidue($result);
 }
 function creaArchivioLega()
 {
@@ -64,7 +78,6 @@ return $row['email'];
 //ritorna true se presente e falso se no;
 function verUtente($ut, $pa){
 	$sql="SELECT nome FROM Utente WHERE matricola= '$ut' AND pass='$pa'" or die ("Errore query verifica utente\n ");
-	echo $sql;
 	$conn=getDatabase();
 	$result= mysqli_query($conn, $sql);
 	$row=mysqli_fetch_assoc($result);

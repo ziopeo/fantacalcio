@@ -7,35 +7,26 @@ include 'corpo.php';
 
 if (!isset($_POST['metodo']))
 	{$_POST['metodo']="";}
-echo $_POST['metodo'];
+
 switch($_POST['metodo']){
-	case 'logoutPage';
-			
+	case 'logoutPage';			
 			break;
 	case 'login';
-			if ($utenteConnesso=verUtente($_POST['utente'], $_POST['password'])){
-				$_SESSION['loggato']=$utenteConnesso;
-				echo creaGraficaFormazioni("4-4-2");
+			if ($utenteConnesso=verUtente($_POST['utente'], $_POST['password']))
+			{	$_SESSION['loggato']=$utenteConnesso;
+					stampaFormazioniPage();
 			}
 			break;
 	case 'loginAdmin';
-	if ($utenteConnesso=verAdmin($_POST['utente'], $_POST['password'])){
-		$_SESSION['loggato']=$utenteConnesso;
-		echo creaGraficaAdmin();
-	}
-	break;
+		if ($utenteConnesso=verAdmin($_POST['utente'], $_POST['password']))
+		{	$_SESSION['loggato']=$utenteConnesso;
+			echo creaGraficaAdmin();
+		}
+		break;
 	case 'caricaCalendario';
-			echo "caricamento calendario\n";
-			echo $_POST['file'];	
-		//caricaCal();
-
 			break;
 	case 'caricaArchivioGiocatori';
-		echo "baosdbiofbasdbfas";
 			caricaGiocatori(peoCsvtoArray($_POST['fileGiocatori']));
-			break;
-	case 'formazioniPage';
-		echo creaGraficaFormazioni("4-4-2");
 			break;
 	case 'rosaPage';
 			break;
@@ -44,29 +35,52 @@ switch($_POST['metodo']){
 	case 'utentePage';
 			creaGraficaAdmin();
 			break;
-	case 'getFormazioni':
-			creaGraficaFormazioni($_POST['modulo']);
+	case 'formazioniPage':
+	echo "sssaaa";
+			stampaFormazioniPage();
 			break;
-	case 'loginAdminnn':
+	case 'loginAdminnn';
 			echo getSquadre();
 			break;
-	case 'caricaSquadre':
+	case 'caricaSquadre';
 			echo getSquadreTotale();
 			break;
-	case 'getSquadre':
-		
-			$result=getSquadreTotale();
-			json_encode($result);
-			while($row=mysqli_fetch_assoc($result))
-				$arr[]=	  $row;
-				echo json_encode($arr);
+	case 'getGiocatoriSquadra';
+			echo (getGiocatoriSquadra($_POST['squadra']));
 			break;
-
+	case 'getSquadre';
+			echo jsonparentesi();
+			break;
 	default:
 		//homepage default
-		staticPage();
+		stampaHomePage();
 		break;
 
+}
+
+function getSquadreTutte()
+{
+$result=getSquadreTotale();
+			while($row=mysqli_fetch_assoc($result))
+				$arr[]=$row;
+				
+			return $arr;
+		}
+function jsonparentesi()
+
+{	$result=getSquadreTotale();
+			while($row=mysqli_fetch_assoc($result))
+				$arr[]=$row;
+
+	$out='{"squadre":[';
+	for($i=0;$i<count($arr);$i++)
+	
+		if($i==count($arr)-1) 
+			$out.=  '{"squadra":"' . $arr[$i]["squadra"]. '"}';
+		else $out.=  '{"squadra":"' . $arr[$i]["squadra"]. '"},';
+		
+		$out.=']}';
+	return $out;
 }
 
 

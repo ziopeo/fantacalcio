@@ -1,19 +1,5 @@
-console.log("ciao");
-var xmlhttp;
 
 //connessione stantard ajax
-function connectAja() {
-        var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-               document.getElementById("demo").innerHTML = xmlhttp.responseText;
-            }
-        };
-        xmlhttp.open("POST", "controller.php", true);
-        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    	xmlhttp.send("metodo=login&user=giuseppe&pass");
-    }
-
 function cambiaUserEmailAdmin(check)
 {   var x=document.getElementById("userLoginText");
     if(check.checked)
@@ -28,30 +14,18 @@ function loginAja(check) {
            var pass =document.getElementById("passwordLoginText");
            var admin= document.getElementById("adminCheck");
            if (admin.checked)
-            connectAjax("metodo=loginAdmin&utente="+ut.value+"&password="+pass.value, "corpo");
+            connectA("metodo=loginAdmin&utente="+ut.value+"&password="+pass.value);
             else
-                connectAjax("metodo=login&utente="+ut.value+"&password="+pass.value, "corpo");
+                connectA("metodo=login&utente="+ut.value+"&password="+pass.value);
 console.log(admin.checked);
     }
 
-function connectAjax(parametri, idResponse)
-{
-         var xmlhttp = new XMLHttpRequest();
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { 
-                document.getElementById(idResponse).innerHTML=xmlhttp.responseText;
-               
-            }
-        };
-        xmlhttp.open("POST", "controller.php", true);
-          xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xmlhttp.send(parametri);
-    }
-    function connectAj( parametri, idResponse)
+
+    function connectAj()
 {
          xmlhttp = new XMLHttpRequest();
          
-        xmlhttp.open("POST", "controller.php", true);
+        xmlhttp.open("POST", "controller.php", false);
           xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlhttp.send(parametri);
         return xmlhttp;
@@ -62,10 +36,31 @@ function connectAjax(parametri, idResponse)
     function selezionaFormazioni(modulo) {
             connectAjax("metodo=getFormazioni&modulo="+modulo);
     }
-    function caricaGiocatori()
-    {   
+    function removeOptions(selectbox)
+{
+    var i;
+    for(i=selectbox.options.length-1;i>=0;i--)
+    {
+        selectbox.remove(i);
+    }
+}
+function caricaGiocatori()
+    {   var squadra=document.getElementById("selectSquadra").value;
+        var eelemento=document.getElementById("selectFormazioni");
         console.log("archivioGiovatoriCaricamento...")
-        connectAjax("metodo=caricaArchivioGiocatori&file=","corpo");
+        var xml =connectA("metodo=getGiocatoriSquadra&squadra="+squadra);
+        xml.onreadystatechange= function(){
+                        
+                        var x=xml.responseText;
+                        var t=(JSON.parse(x));
+                        console.log(t);
+                        removeOptions(eelemento);
+
+                        for (i=0;i<(x.length);i++){
+                    var option= document.createElement("option");
+                    option.text = option.value=x[i].nome;
+                    eelemento.add(option);}
+        }
     }
 
     function caricaCalendario()
@@ -87,21 +82,35 @@ function connectAjax(parametri, idResponse)
     
     }
 
- function getSquadre(elemento)
-    {
-        var xml=connectAj("metodo=getSquadre", "corpo");
-        xml.onreadystatechange = function ()
-        
-        {var x;
+function connectA(metodo)
+{
+    var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("POST", "controller.php", true);
+        xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xmlhttp.send(metodo);
+        return xmlhttp;
+
+}
+
+
+ function getSquadre()
+    { 
+
+
+       var eelemento=document.getElementById("selectSquadra");
+        var xml=connectA("metodo=getSquadre");
+        xml.onreadystatechange = function (){
+                var x;
             if (xml.readyState == 4 && xml.status == 200) {
-                
-                // console.log(x);
-                 console.log(xml.responseText);
-                 
-   
-               
+                 var t= (xml.responseText);
+                 console.log(t);
+                var res=JSON.parse(t.replace("getSquadre", ""));
+                for (i=0;i<(res.squadre.length);i++){
+                    var option= document.createElement("option");
+                    option.text = option.value=res.squadre[i].squadra;
+                    eelemento.add(option);
+                   
+                  }           
             }
         }
     }
-
-

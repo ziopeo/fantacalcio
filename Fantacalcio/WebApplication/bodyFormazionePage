@@ -1,0 +1,4 @@
+<body onload="getSquadre()">
+<div id="contenitore">
+</div>
+   
