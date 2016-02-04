@@ -5,7 +5,7 @@
 			<option value="squadra">juventus</option>
   		</select>	
 	</div>
-    <select id="selectFormazioni" size="20"  multiple onchange="selectoption();" > 
+    <select id="selectFormazioni" size="20"  multiple onDblClick="alert(this.value)" onchange="selectoption()" > 
     	<option value="4-3-3">4-3-3</option>
   		<option value="3-4-3">3-4-3</option>
   		<option value="4-4-2">4-4-2</option>

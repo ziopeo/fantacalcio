@@ -93,7 +93,7 @@ function caricaGiocatori()
         xmlhttp.send("metodo=caricaSquadre");
     
     }
-
+//connession di default. dato un metodo restituisce i dati desiderati
 function connectA(metodo)
 {
     var xmlhttp = new XMLHttpRequest();
@@ -116,10 +116,10 @@ function connectA(metodo)
             if (xml.readyState == 4 && xml.status == 200) {
                  var t= (xml.responseText);
                  console.log(t);
-                var res=JSON.parse(t.replace("getSquadre", ""));
-                for (i=0;i<(res.squadre.length);i++){
+                var res=JSON.parse(t);
+                for (i=0;i<(res.length);i++){
                     var option= document.createElement("option");
-                    option.text = option.value=res.squadre[i].squadra;
+                    option.text = option.value=res[i].squadra;
                     eelemento.add(option);
                    
                   }           

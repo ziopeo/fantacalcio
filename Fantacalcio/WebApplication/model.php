@@ -22,14 +22,21 @@ function caricaGiocatori($giocatori)
 	}
 
 }
+function jsonpreformat($result)
+{		
+			while($row=mysqli_fetch_assoc($result))
+				$arr[]=$row;
+			return $arr;
+}
 
-//getSquadreTotale: ritorna le squadre  a cui appartengono i giocatori presenti  in archivio: 20 squadre totale
-function getSquadreTotale()
+//getTutteleSquadre: ritorna le squadre  a cui appartengono i giocatori presenti  in archivio: 
+// solitamente in serie a 20 squadre totale
+function getTutteleSquadre()
 {
 	$sql="SELECT DISTINCT `squadra` FROM `Giocatore` " or die ("Errore query verifica admin\n ");
 	$conn=getDatabase();
 	$result= mysqli_query($conn, $sql)or die ("Errore querySquadre\n ");
-return $result;	
+return json_encode(jsonpreformat($result));
 }
 //getGiocatoriSquadra: ritorna i giocatori di una determina $squadra
 function getGiocatoriSquadra($squadra)
@@ -37,7 +44,7 @@ function getGiocatoriSquadra($squadra)
 	$sql="SELECT `idGiocatore`, `ruolo`, `nome`, `squadra`, `prezzoIniziale`, `prezzoAttuale` FROM `Giocatore` WHERE squadra= '$squadra'" or die ("Errore query verifica admin\n ");
 	$conn=getDatabase();
 	$result= mysqli_query($conn, $sql);
-	return jsonparentesidue($result);
+	return json_encode(jsonpreformat($result));
 }
 
 //quando si caricano i giocatori da un file viene creato un nuovo archiviolega a cui appartengono tutti i giocatori caricati
