@@ -1,9 +1,6 @@
 <?php
 	/* non si collega */
 	session_start();
-	include("db.php");
-	include('controller.php');
-	include('model.php');
 ?>	
 	<!doctype html public>
 		<html dir="ltr" lang="IT">
@@ -47,13 +44,16 @@
 							<!--Lista facoltà-->
 							<?php
 								
-								echo'<select name="metodo" id="metodo" value="lista_facolta">';
-								$return_f = 1/*valore di ritorno*/;
-								while(1/*numero di volte che gira*/){
-									echo'<option value="'.$return_f[$i].'"> '.$return_f[$i].'</option>';
+								echo'Facoltà: &nbsp;&nbsp;&nbsp;<select name="metodo" id="metodo" value="lista_facolta">';
+								$return_f = 5/*valore di ritorno*/;
+								while($return_f<0/*numero di volte che gira*/){
+									echo'<option value="'.$return_f.'"> '.$return_f.'</option>';
+									$return_f =$return_f - 1;
 								}
+								echo'<option value="a"> a</option>';
+								echo'</select>';
 							?>
-
+							<br>
 							Squadra: &nbsp;&nbsp;&nbsp; <input type="text" name="squadra_reg"><br>
 							E-mail: &nbsp;&nbsp;&nbsp; <input type="text" name="email_reg"><br>
 							
