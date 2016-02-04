@@ -46,7 +46,8 @@ switch($_POST['metodo']){
 			echo getSquadreTotale();
 			break;
 	case 'getGiocatoriSquadra';
-			echo (getGiocatoriSquadra($_POST['squadra']));
+			header('Content-Type: application/json; charset=UTF8');
+			echo json_encode(getGiocatoriSquadra($_POST['squadra']));
 			break;
 	case 'getSquadre';
 			echo jsonparentesi();
@@ -82,8 +83,3 @@ function jsonparentesi()
 		$out.=']}';
 	return $out;
 }
-
-
-
-
-?>

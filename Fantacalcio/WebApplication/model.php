@@ -1,4 +1,5 @@
 <?php
+//model: prepara risultati inviati a controller, facendo query sul database o letture su file
 
 function getModelGiocatori() 
 { 
@@ -6,7 +7,7 @@ function getModelGiocatori()
 	$result= mysqli_query($conn, $sql);
 	return $result;
 }
-
+//caricaGiocatori: inserisce i giocatori con un query sul database da un array di giocatori
 function caricaGiocatori($giocatori)
 {
 	$idArchivioLega=creaArchivioLega();
@@ -18,35 +19,19 @@ function caricaGiocatori($giocatori)
 		echo $queryArchivia='INSERT INTO `GiocatoreArchiviato`(`archivioLega`, `giocatore`) VALUES ('. $idArchivioLega .','.$arr[0]. ')'; 
  		mysqli_query($conn, $queryInserisci) or die ("Errore queryInserisci\n ");
 		mysqli_query($conn, $queryArchivia) or die ("Errore queryArchivia\n ");
-}
+	}
 
 }
+
+//getSquadreTotale: ritorna le squadre  a cui appartengono i giocatori presenti  in archivio: 20 squadre totale
 function getSquadreTotale()
 {
-	
 	$sql="SELECT DISTINCT `squadra` FROM `Giocatore` " or die ("Errore query verifica admin\n ");
 	$conn=getDatabase();
 	$result= mysqli_query($conn, $sql)or die ("Errore querySquadre\n ");
-	//echo json_encode($result);
 return $result;	
 }
-
-function jsonparentesidue($result)
-
-{	
-			while($row=mysqli_fetch_assoc($result))
-				$arr[]=$row;
-			$out="";
-	$out='[';
-	for($i=0;$i<count($arr);$i++)
-		if($i==count($arr)-1) 
-			$out.=  '{"nome":"' . $arr[$i]['nome']. '"}';
-		else $out.=  '{"nome":"' . $arr[$i]['nome']. '"},';
-		
-		$out.=']';
-	print_r($arr);
-	return $out;
-}
+//getGiocatoriSquadra: ritorna i giocatori di una determina $squadra
 function getGiocatoriSquadra($squadra)
 {
 	$sql="SELECT `idGiocatore`, `ruolo`, `nome`, `squadra`, `prezzoIniziale`, `prezzoAttuale` FROM `Giocatore` WHERE squadra= '$squadra'" or die ("Errore query verifica admin\n ");
@@ -54,6 +39,9 @@ function getGiocatoriSquadra($squadra)
 	$result= mysqli_query($conn, $sql);
 	return jsonparentesidue($result);
 }
+
+//quando si caricano i giocatori da un file viene creato un nuovo archiviolega a cui appartengono tutti i giocatori caricati
+//in quella dataUpload
 function creaArchivioLega()
 {
 	echo $idAteneo=getLegaAteneoCorrente();
@@ -65,6 +53,7 @@ function creaArchivioLega()
 return $idArchivioLega;
 }
 
+//verAdmin: si occupa del login di admin
 function verAdmin($ut, $pa){
 	$sql="SELECT email FROM Admin WHERE email= '$ut' AND password='$pa'" or die ("Errore query verifica admin\n ");
 	echo $sql;
@@ -83,6 +72,8 @@ function verUtente($ut, $pa){
 	$row=mysqli_fetch_assoc($result);
 return $row['nome'];
 }
+
+//getAdmin: ritorna l'id dell'admin della lega corrente
 function getAdmin()
 {
 	$sql="SELECT `idAdmin`FROM `Admin`"or die ("Errore query get admin\n ");
@@ -96,7 +87,7 @@ return $row['idAdmin'];
 function registraUtente(){}
 
 
-
+//getLegaAteneoCorrente: ritorna l'id della lega Ateneo in corso
 function getLegaAteneoCorrente()
 {
 	$sql='SELECT `idLeghe` FROM Leghe WHERE `attiva`=1' or die ("Errore query get id ateneo corrente\n ");
@@ -105,6 +96,10 @@ function getLegaAteneoCorrente()
 	$row=mysqli_fetch_assoc($result);
 return $row['idLeghe'];	
 }
+
+//disattivaLegheAteneo: imposta lo stato di tutte le leghe ateneo presenti a 0; 
+//servizio per avviaLegaAteneo()
+
 function disattivaLegheAteneo()
 {
 	$sql="UPDATE `Leghe` SET `attiva`=0 WHERE 1" or die ("Errore query disattiva leghe\n ");
@@ -114,6 +109,7 @@ function disattivaLegheAteneo()
 return $result;
 }
 
+//avvia una nuova lega Ateneo 
 function avviaLegaAteneo()
 {
 	disattivaLegheAteneo();
@@ -127,20 +123,7 @@ return $result;
 function getNumeroGiornate(){}
 
 
-
-function caricaCalendarioModel($arr)
-{	$idLega=getLegaAteneoCorrente();
-	for ($i=0;$i<count($arr);$i++)
-	{
-		$temp= explode("-", arr[$i]);
-		$temp1=explode("(", temp[0]);
-		$temp2=explode(")", temp[1]);
-
-		creaGiornata($temp1, $temp2, $idLega);	
-
-	}
-}
-
+//creaGiornate: crea una giornata; servizio per caricaCal()
 function creaGiornata($data,$i){
 	$idLeg=getLegaAteneoCorrente();
 	//echo $idLeg;
@@ -154,7 +137,7 @@ function creaGiornata($data,$i){
 return $result;
 }
 
-
+//funziona che converte il file csv contenente la lista di giocatori
 function peoCsvtoArray($file){
 $handle = @fopen($file, "r");
 if ($handle) 
@@ -167,28 +150,48 @@ if ($handle)
 		{	$arr[$i]= explode(";",str_replace("'", "",str_replace("?", "", trim(utf8_decode($lineArray)))));; 	}
 	 $i++;	}
 	if (!feof($handle)) {
-        echo "Error: unexpected fgets() fail\n";	}
+        echo "Errore: fgets: peoCsvtoArray\n";	}
     fclose($handle);	
 	}
-	print_r($arr);
 return $arr;
 }
-function caricaCal(){
-$handle = @fopen("calendario.csv", "r");
+
+//caricaCalendarioModel: crea un nuovo calendario di giornate e le attribuisce alla lega creata
+/*
+il file delle giornate per essere caricate devono con il seguente formato
+IL FILE NELLA CARTELLA DI RIFERIMENTO è calendario.csv
+-------------------
+
+23/08/15-17/01/16
+"
+27/08/15-17/01/16
+"
+.
+.
+.
+"
+30/08/15-24/01/16
+"
+13/09/15-31/01/16
+
+-------------------
+*/
+function caricaCal($file){
+	//Da modificare con il fileinput
+$handle = @fopen($file, "r");
 $idLega=1;
 if ($handle) 
     {   $i=0;
-    $lett=fread($handle,filesize("calendario.csv"));
-    $arr=explode('"', ($lett));
-    $j=19;
-    for ($i=0;$i<count($arr);$i++)
-    {	$temp3=($arr[$i]);
-        $temp1=explode(('-'), trim($temp3));
-   		$arra[$i]= trim($temp1[0]);
-   		$arra[$j]=trim($temp1[1]); 
-        $j++;   
-
-    }
+    	$lett=fread($handle,filesize("calendario.csv"));
+    	$arr=explode('"', ($lett));
+    	$j=19;
+    	for ($i=0;$i<count($arr);$i++)
+    	{	$temp3=($arr[$i]);
+       		$temp1=explode(('-'), trim($temp3));
+   			$arra[$i]= trim($temp1[0]);
+   			$arra[$j]=trim($temp1[1]); 
+        	$j++;   
+		}
     for ($i=0;$i<=37;$i++){
     	creaGiornata($arra[$i], $i+1);
        
@@ -197,6 +200,21 @@ fclose($handle);
 }
 }
 
+
+//WORK IN PROGRES ---------------------------------------------------
+//TEMP
+function caricaCalendarioModel($arr)
+{	$idLega=getLegaAteneoCorrente();
+	for ($i=0;$i<count($arr);$i++)
+	{
+		$temp= explode("-", $arr[$i]);
+		$temp1=explode("(", $temp[0]);
+		$temp2=explode(")", $temp[1]);
+
+		creaGiornata($temp1, $temp2, $idLega);	
+
+	}
+}
 
 
 

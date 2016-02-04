@@ -1,4 +1,3 @@
-
 <?php 
 function getCorpoGiornate()
 {
@@ -29,7 +28,3 @@ include 'login.php';
 include 'footer.php';
 }
 ?>
-	
-
-
-

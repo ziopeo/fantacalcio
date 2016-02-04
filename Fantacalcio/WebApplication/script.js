@@ -45,15 +45,18 @@ console.log(admin.checked);
     }
 }
 function caricaGiocatori()
-    {   var squadra=document.getElementById("selectSquadra").value;
+    {   
+        var squadra=document.getElementById("selectSquadra").value;
         var eelemento=document.getElementById("selectFormazioni");
         console.log("archivioGiovatoriCaricamento...")
         var xml =connectA("metodo=getGiocatoriSquadra&squadra="+squadra);
         xml.onreadystatechange= function(){
+                        if (xml.readyState == 4 && xml.status == 200) {
                         
-                        var x=xml.responseText;
-                        var t=(JSON.parse(x));
-                        console.log(t);
+                        var x=JSON.parse(xml.responseText);
+                        debugger;
+                        // console.log(x);
+                        console.log(x);
                         removeOptions(eelemento);
 
                         for (i=0;i<(x.length);i++){
@@ -62,6 +65,15 @@ function caricaGiocatori()
                     eelemento.add(option);}
         }
     }
+}
+    function myFunction(arr) {
+    var out = "";
+    var i;
+    for(i = 0; i < arr.length; i++) {
+        out += arr[i]['nome'];
+    }
+    console.log(out);
+}
 
     function caricaCalendario()
     {    var t=document.getElementById("fileUploadCalendario").value;
@@ -75,7 +87,7 @@ function caricaGiocatori()
             if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                document.getElementById("demo").innerHTML = xmlhttp.responseText;
             }
-        };
+        }
         xmlhttp.open("POST", "controller.php", true);
         xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xmlhttp.send("metodo=caricaSquadre");
