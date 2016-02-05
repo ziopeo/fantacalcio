@@ -37,12 +37,10 @@ switch($_POST['metodo']){
 			creaGraficaAdmin();
 		}
 		break;
-//carica il calendario tramite un file 
 	case 'caricaCalendario';
+//carica il calendario tramite un file 
 			caricaCal($_POST['fileCalendario']);
 			break;
-
-
 	case 'caricaArchivioGiocatori';
 //servizio crea un Archivio di Giocatori da un file 
 			caricaGiocatori(peoCsvtoArray($_POST['fileGiocatori']));
@@ -71,7 +69,10 @@ switch($_POST['metodo']){
 			header('Content-Type: application/json; charset=UTF8');
 			echo (getGiocatoriSquadra($_POST['squadra']));
 			break;
-
+	case 'getInformazioniGiocatore';
+			header('Content-Type: application/json; charset=UTF8');
+			echo (getInformazioniGiocatore($_POST['calciatore']));
+			break;
 	default:
 		//homepage default
 		stampaHomePage();

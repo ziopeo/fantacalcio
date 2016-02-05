@@ -1,13 +1,37 @@
-<div align="center">
-	<div>
-		<select id="selectSquadra" onchange="caricaGiocatori()"> 
+<div id="divFormazioni">
+	<div id="selezionaGiocatori">
+		<select id="selectSquadra" onchange="caricaGiocatori(this.value)"> 
+			<option value="squadra"></option>
 			<option value="squadra">squadra</option>
 			<option value="squadra">juventus</option>
   		</select>	
+  	
+  	
+<p/>		<select id="selectGiocatore" size="30" onClick="caricaInformazioniGiocatore(this)" ondblclick="aggiungiArosa(this)" multiple  onchange="" > 
+			<optgroup label="Portieri" id="optPortieri"><option >sdfasdf</option></optgroup>
+  			<option ></option>
+  			<optgroup label="Difensori" id="optDifensori"></optgroup>
+  			<option value="squadra"></option>
+  			<optgroup label="Centrocampisti" id="optCentrocampisti"></optgroup>
+  			<option value="squadra"></option>
+  			<optgroup label="Attaccanti" id="optAttaccanti"></optgroup>
+  		</select>
 	</div>
-    <select id="selectFormazioni" size="20"  multiple onDblClick="alert(this.value)" onchange="selectoption()" > 
-    	<option value="4-3-3">4-3-3</option>
-  		<option value="3-4-3">3-4-3</option>
-  		<option value="4-4-2">4-4-2</option>
-  	</select>
+	 <div id="selezionaRosa">
+  		<select id="selectFormazione" onchange="" > 
+	    	
+	  	</select><p/>
+	  	<select id="selectGiocatoriRosa" size="20"  multiple onDblClick="alert(this.value)" onchange="" > 
+	    	<optgroup label="rosaPortieri" id="optRosaPortieri"><option >sdfasdf</option></optgroup>
+  			<option ></option>
+  			<optgroup label="Difensori" id="optRosaDifensori"></optgroup>
+  			<option value="squadra"></option>
+  			<optgroup label="Centrocampisti" id="optRosaCentrocampisti"></optgroup>
+  			<option value="squadra"></option>
+  			<optgroup label="Attaccanti" id="optRosaAttaccanti"></optgroup>
+	  		
+	  	</select>
+  	</div>
+  	<div id="informazioniGiocatore">
+  	</div>
 </div>
