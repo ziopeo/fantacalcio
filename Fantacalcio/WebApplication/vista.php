@@ -15,7 +15,7 @@ include 'bodyFormazionePage.php';
 include 'header.php';
 
 include 'sidebar.php';
-include 'formazioni.php'; 
+include 'rosa.php'; 
 include 'footer.php';
 }
 function stampaHomePage()

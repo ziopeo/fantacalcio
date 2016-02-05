@@ -7,8 +7,8 @@
 						#immHome {width:20%; height:auto;}
 						#selectFormazioni{height:300px;width:250px;}
 						#selectSquadra{width:100%;}
-						#selectGiocatoriRosa{height:300px;width:250px;}
-						#selectGiocatore{height:300px;width:250px;}
+						#selectGiocatoriRosa{height:500px;width:250px;}
+						#selectGiocatore{height:500px;width:250px;}
 						#selezionaGiocatori {
 							    left: 240px;
 							    position: absolute;
