@@ -9,7 +9,7 @@ function cambiaUserEmailAdmin(check)
 }
 
 
-function loginAja(check) {
+function loginAja() {
            var ut=document.getElementById("userLoginText");
            var pass =document.getElementById("passwordLoginText");
            var admin= document.getElementById("adminCheck");
@@ -17,6 +17,7 @@ function loginAja(check) {
             connectA("metodo=loginAdmin&utente="+ut.value+"&password="+pass.value);
             else
                 connectA("metodo=login&utente="+ut.value+"&password="+pass.value);
+            console.log(ut.value + pass.value);
     }
 
 
@@ -46,11 +47,12 @@ function loginAja(check) {
 
 function caricaInformazioniGiocatore(giocatore){
     var eelemento=document.getElementById("informazioniGiocatore");
-    var xml =connectA("metodo=getInformazioniGiocatore&calciatore="+giocatore.value);
+    var k=gFS(giocatore, 1);
+    var xml =connectA("metodo=getInformazioniGiocatore&calciatore="+k);
     xml.onreadystatechange= function(){
                         if (xml.readyState == 4 && xml.status == 200) {
                         var x=JSON.parse(xml.responseText);
-                           eelemento.textContent="Nome: " + x[0].nome+ "\nPrezzo Attuale: "+ x[0].prezzoAttuale+"\nRuolo: "+ x[0].ruolo+"\nSquadra: "+ x[0].squadra ;
+                           eelemento.textContent="Nome: " + x[0].nome+ "Prezzo Attuale: "+ x[0].prezzoAttuale+"Ruolo: "+ x[0].ruolo+"Squadra: "+ x[0].squadra ;
                         }
                                     }
 }
@@ -93,7 +95,7 @@ function caricaGiocatori(squadra)
                 for (i=0;i<(x.length);i++){
                     var option= document.createElement("option");
                     option.text =x[i].nome +" ( "+ x[i].prezzoIniziale+ " )";
-                    option.value=x[i].nome;
+                    option.value=x[i].nome+"="+x[i].prezzoIniziale;
                     switch (x[i].ruolo){
                         case "P" : 
                                 portieriopt.appendChild(option);
@@ -160,20 +162,29 @@ function connectA(metodo)
 
 }
 function checkEsiste(nome, x, parametro){
-var y=x.childNodes;var i=0;sw=0;
+//verifica se il giocatore esiste già nella select 
+//e verifica se ha raggiunto la quota max di giocatori
+//parametreo: 1=> portieri, 2=>difensori, 3....
+
+var y=x.childNodes;var i=0;sw=0;s="";
+
 switch (parametro){
     case 1:  
         while (i<y.length){
-            if (y[i].value==nome)
+            s=gFS(y[i],1);
+                console.log(gFS(y[i],1)+"nnsdndns" + "   "+nome);
+            if (s==nome)
                  sw=1; 
             if (i>1){
                 sw=2;
+                
                 break;
                 }i++;}
             break;
     case 2:  
         while (i<y.length){
-            if (y[i].value==nome)
+            s=gFS(y[i],1);
+            if (s==nome)
                  sw=1; 
             if (i>6){
                 sw=2;
@@ -182,7 +193,8 @@ switch (parametro){
             break;
     case 3:  
         while (i<y.length){
-            if (y[i].value==nome)
+            s=gFS(y[i],1);
+            if (s==nome)
                  sw=1; 
             if (i>6){
                 sw=2;
@@ -191,7 +203,8 @@ switch (parametro){
             break;
     case 4:  
         while (i<y.length){
-            if (y[i].value==nome)
+            s=gFS(y[i],1);
+            if (s==nome)
                  sw=1; 
             if (i>4){
                 sw=2;
@@ -205,78 +218,163 @@ return sw;
 }
 
 function aggiungiArosa(giocatore)
-
-{           var portieriopt=document.getElementById("optRosaPortieri");
+{var sw=false;           
+    if (acquistoFantamilioni(giocatore, 1, 0)!=null)
+    {
+        var portieriopt=document.getElementById("optRosaPortieri");
         var difensoriopt=document.getElementById("optRosaDifensori");
         var centrocampistiopt=document.getElementById("optRosaCentrocampisti");
         var attaccantiopt=document.getElementById("optRosaAttaccanti");
-
-            var option=document.createElement("option");
-                                          var i;
-                     var xml =connectA("metodo=getInformazioniGiocatore&calciatore="+giocatore.value);
-                        xml.onreadystatechange= function(){
-                        if (xml.readyState == 4 && xml.status == 200) {
-                        var x=JSON.parse(xml.responseText);
-                         option.value=x[0].nome;
+        var option=document.createElement("option");
+        var xml =connectA("metodo=getInformazioniGiocatore&calciatore="+gFS(giocatore, 1));
+            xml.onreadystatechange= function(){
+                if (xml.readyState == 4 && xml.status == 200) {
+                    var x=JSON.parse(xml.responseText);
+                    option.value=x[0].nome+"="+x[0].prezzoIniziale;
                     option.text = x[0].nome + " ( "+x[0].prezzoIniziale+ " ) "; 
-                       switch (x[0].ruolo){
-                        case "P" : ;
+                    switch (x[0].ruolo){
+                        case "P" :
                                     i=(checkEsiste(x[0].nome, portieriopt, 1));
-                                if(i==0)
+                                if(i==0){
                                         portieriopt.appendChild(option);
-                                    else if (i==1)
-                                        alert("Possiedi già questo giocatore");
-                                    else if (i=2)
-                                        alert("Puoi acquistare massimo 3 portieri");
-                            break;
-                        case "D":debugger;
+                                        sw=true;
+                                         }   
+                                else if (i==1)
+                                    alert("Possiedi già questo giocatore");
+                                else if (i=2)
+                                    alert("Puoi acquistare massimo 3 portieri");
+                                break;
+                        case "D":
                                 i=(checkEsiste(x[0].nome, difensoriopt, 2));
-                                if(i==0)
-                                        difensoriopt.appendChild(option);
-                                    else if (i==1)
-                                        alert("Possiedi già questo giocatore");
-                                    else if (i=2)
+                                if(i==0){
+                                    difensoriopt.appendChild(option);
+                                    sw=true;}    
+                                else if (i==1)
+                                    alert("Possiedi già questo giocatore");
+                                else if (i=2)
                                         alert("Puoi acquistare massimo 8 difensori");
-                            break;
+                                break;
                         case "C":
                                 i=(checkEsiste(x[0].nome, centrocampistiopt, 3));
-                                if(i==0)
-                                        centrocampistiopt.appendChild(option);
-                                    else if (i==1)
-                                        alert("Possiedi già questo giocatore");
-                                    else if (i=2)
-                                        alert("Puoi acquistare massimo 8 centrocampisti");
-                                    break;
+                                if(i==0){
+                                    centrocampistiopt.appendChild(option);
+                                    sw=true;}
+                                else if (i==1)
+                                    alert("Possiedi già questo giocatore");
+                                else if (i=2)
+                                    alert("Puoi acquistare massimo 8 centrocampisti");
+                                break;
                         case "A":
-                            i=(checkEsiste(x[0].nome, attaccantiopt, 4));
-                                if(i==0)
-                                        attaccantiopt.appendChild(option);
-                                    else if (i==1)
-                                        alert("Possiedi già questo giocatore");
-                                    else if (i=2)
+                                i=(checkEsiste(x[0].nome, attaccantiopt, 4));
+                                if(i==0){
+                                    attaccantiopt.appendChild(option);
+                                    sw=true;}
+                                else if (i==1)
+                                    alert("Possiedi già questo giocatore");
+                                else if (i=2)
                                         alert("Puoi acquistare massimo 6 attaccanti");
-                            break;
+                                break;
                         default:
-                            break;
-                   }
-}}
-}
- function getSquadre()
-    { 
-
-
-       var eelemento=document.getElementById("selectSquadra");
-        var xml=connectA("metodo=getSquadre");
-        xml.onreadystatechange = function (){
-                var x;
-            if (xml.readyState == 4 && xml.status == 200) {
-                var t= (xml.responseText);
-                var res=JSON.parse(t);
-                for (i=0;i<(res.length);i++){
-                    var option= document.createElement("option");
-                    option.text = option.value=res[i].squadra;
-                    eelemento.add(option);
-                   }           
+                                break;
+                    }
                 }
+                if(sw==true){
+                    (acquistoFantamilioni(giocatore, 1, 1));    }
+            }
+}
+
+
+
+}
+
+/*
+fantamilioni prende dal database e li aggiorna nel testo 
+del div contenente i fantamilioni
+*/
+function fantamilioni()
+{
+    var fant = document.getElementById("fantamilioni");
+    var xml=connectA("metodo=getFantamilioni");
+    xml.onreadystatechange = function (){
+    if (xml.readyState == 4 && xml.status == 200) {
+        var t= (xml.responseText);
+        var res=(t);
+        fant.textContent=res;
+        }           
+    }
+        
+}
+
+/*
+acquistaFantamilioni: si occupa di aggiornare il totale dei fantamilioni
+e di verificare se l utente può permettersi di acquistare quel giocatore.
+acqu_vend: indica se si vuole acquistare o vendere
+calcoloSi: abilita l aggiornamento del totale anche nel divFANTAMILIONI, 
+cosa inutile in caso di verifica
+*/
+
+function acquistoFantamilioni(giocatore, acqu_vend, calcoloSi)
+{
+    var fant = document.getElementById("fantamilioni");
+    var x=parseInt(fant.textContent);
+    if (acqu_vend==1)
+        x=x- gFS(giocatore,0);
+    else if (acqu_vend==0)
+        x=x+ gFS(giocatore,0);
+    if (x>0){
+        if (calcoloSi==1){
+            fant.textContent=x;
+            return true;    }
+         else if (calcoloSi!=1)
+            return true;
+        }
+    else {
+        return false; }
+}
+
+/*
+gFS: da un giocatore ne prende il value passato con formato "BUFFON=17"
+splitta e a seconda del parametro:
+0 restituisce il costo
+1 restituisce il nome
+*/
+function gFS(giocatore, para)
+{
+    var k= giocatore.value.split("=");
+    if (para==0) //stampa il prezzo
+       return parseInt(k[1]);
+    else if (para==1) //stampa il nome
+        return k[0];
+    else return null;
+}
+/*
+si occupa ti aggiornare il divFantamilioni dopo la rivendita del giocatore x
+*/
+function venditaFantamilioni(x)
+{
+    var fant = document.getElementById("selectGiocatoriRosa");
+    if (acquistoFantamilioni(x, 0,1)!=null)
+        x.remove(x.selectedIndex);
+
+}
+/*
+chiama le squadre sul database per caricare la selectSquadra
+che serve poi per visualizzare i giocatori da acquistare
+*/
+ function getSquadre()
+{ 
+    var eelemento=document.getElementById("selectSquadra");
+    var xml=connectA("metodo=getSquadre");
+    xml.onreadystatechange = function (){
+    var x;
+    if (xml.readyState == 4 && xml.status == 200) {
+        var t= (xml.responseText);
+        var res=JSON.parse(t);
+        for (i=0;i<(res.length);i++){
+            var option= document.createElement("option");
+            option.text = option.value=res[i].squadra;
+            eelemento.add(option);
+           }           
         }
     }
+}

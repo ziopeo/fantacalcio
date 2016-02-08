@@ -1,25 +1,14 @@
-<!DOCTYPE html><html><head>
-<SCRIPT type="text/javascript" src="script.js"></SCRIPT>
-<style> 	
-#immLogo{ width: 80%; height: auto; }
-						#giornate{    text-align: center;	width: 100%;}
-						#table1{	width:100%; 	}
-						#immHome {width:20%; height:auto;}
-						#selectFormazioni{height:300px;width:250px;}
-						#selectSquadra{width:100%;}
-						#selectGiocatoriRosa{height:500px;width:250px;}
-						#selectGiocatore{height:500px;width:250px;}
-						#selezionaGiocatori {
-							    left: 240px;
-							    position: absolute;
-							    top: 270px;
-							}
-							#selezionaRosa {
-							    right:400px;
-							    position: absolute;
-							    top: 264px;
-							}	
-							#informazioniGiocatore{}
+<head>
+  <title>UFL Fantaleague</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/ufl.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+  
+</head>
 
-</style>
+  
 

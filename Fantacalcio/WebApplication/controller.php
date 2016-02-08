@@ -6,7 +6,7 @@ session_start();
 include 'db.php'; //file database
 include 'model.php'; //modello dei dati, consente le chiamate al database
 include 'vista.php'; //include le funzioni grafiche per stampare il corpo delle pagine web di UFL
-include 'corpo.php';// temporaneo
+// temporaneo
 
 //le richieste vengono passate attraverso le chiamate POST
 //ogni richiesta ha un suo servizio
@@ -73,6 +73,11 @@ switch($_POST['metodo']){
 			header('Content-Type: application/json; charset=UTF8');
 			echo (getInformazioniGiocatore($_POST['calciatore']));
 			break;
+	case 'getFantamilioni';
+			header('Content-Type: application/json; charset=UTF8');
+			echo (getFantamilioni($_SESSION['loggato']));
+			break;
+
 	default:
 		//homepage default
 		stampaHomePage();

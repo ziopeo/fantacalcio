@@ -71,11 +71,11 @@ return $row['email'];
 //verifica login con nome utente e password
 //ritorna true se presente e falso se no;
 function verUtente($ut, $pa){
-	$sql="SELECT nome FROM Utente WHERE matricola= '$ut' AND pass='$pa'" or die ("Errore query verifica utente\n ");
+	$sql="SELECT email FROM Utente WHERE email= '$ut' AND pass='$pa'" or die ("Errore query verifica utente\n ");
 	$conn=getDatabase();
 	$result= mysqli_query($conn, $sql);
 	$row=mysqli_fetch_assoc($result);
-return $row['nome'];
+return $row['email'];
 }
 
 //getAdmin: ritorna l'id dell'admin della lega corrente
@@ -228,6 +228,15 @@ function caricaCalendarioModel($arr)
 	}
 }
 
+function getFantamilioni($utente)
+{
+	$sql="SELECT `fantamilioni` FROM Utente WHERE `email`='$utente'" or die ("Errore query get id ateneo corrente\n ");
+	
+	$conn=getDatabase();
+	$result= mysqli_query($conn, $sql);
+	$row=mysqli_fetch_assoc($result);
+return $row['fantamilioni'];	
+}
 
 
 ?>
