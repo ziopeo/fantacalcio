@@ -29,4 +29,44 @@
       }
       .row.content {height:auto;} 
     }
+
+    #selectGiocatore {
+    width: 250px;
+    position: relative;
+    height: 470px;
+    left: -26px;
+}
+  #selectSquadra {
     
+    position: relative;
+    width: :250px;
+    left: -26px;
+}   
+
+    #selectGiocatoriRosa {
+    width: 250px;
+    position: relative;
+    height: 470px;
+    left: -26px;
+}
+  #selectFormazione {
+    
+    position: relative;
+    width: :250px;
+    left: -26px;
+}
+  #login {
+    position:relative;
+    
+  }
+  #Voto-PagellaTotale{
+    padding: 15px;
+    margin-bottom:200px;
+    background: yellow;
+  }
+  #headVoto-PagellaTotale{
+        margin-top: 100px;
+
+
+  }
+  footer{}

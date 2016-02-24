@@ -2,9 +2,10 @@
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
-     <img id="immGiornate" src="image/giornate.png" width="100" height="16">
+     
        
       <ul class="nav navbar-nav">
+      <li><img id="immGiornate" src="image/giornate.png" width="100" height="16"></li>
          <?php getCorpoGiornate();?>
       </ul>
     </div>
@@ -14,7 +15,7 @@
 <?php
 function getCorpoGiornate()
 {
-    $giornate = 37;//=getNumeroGiornate();
+    $giornate =getNumeroGiornate();
     for($i=1;$i<=$giornate;$i++)
         echo '<li><a href="controller.php?giornata='. $i.'">'.$i.'</a></li>';
 }

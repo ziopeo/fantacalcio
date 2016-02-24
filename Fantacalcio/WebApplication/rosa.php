@@ -4,35 +4,35 @@
         
 
       <div id="selezionaGiocatori" class="col-md-3">
-        <select id="selectSquadra" onchange="caricaGiocatori(this.value)">
+        <select class="form-control" id="selectSquadra"  onchange="caricaGiocatori(this.value)">
           <option value="squadra">squadra</option>
           </select> 
-        
+        <script type="text/javascript"> getSquadre();</script>
           <br>
-            <select id="selectGiocatore" size="30" onClick="caricaInformazioniGiocatore(this)" ondblclick="aggiungiArosa(this)" multiple  onchange="" > 
+            <select class="form-control" id="selectGiocatore" size="30" onClick="caricaInformazioniGiocatore(this)" ondblclick="aggiungiArosa(this)" multiple  onchange="" > 
              <optgroup label="Portieri" id="optPortieri"></optgroup>
-                <option value="squadra" > </option>
+
               <optgroup label="Difensori" id="optDifensori"></optgroup>
-                <option value="squadra"> </option>
+
               <optgroup label="Centrocampisti" id="optCentrocampisti"></optgroup>
-                <option value="squadra"> </option>
+
               <optgroup label="Attaccanti" id="optAttaccanti"></optgroup>
             </select>
         </div>
       <div id="selezionaRosa" class="col-md-3">
-          <select id="selectFormazione" onchange="" >     
-         </select>
-         <br>
-        <select id="selectGiocatoriRosa" size="20"  multiple onDblClick="venditaFantamilioni(this);" onchange="" > 
-          <optgroup label="rosaPortieri" id="optRosaPortieri"></optgroup>
-              <option value="squadra"> </option>
-            <optgroup label="Difensori" id="optRosaDifensori"></optgroup>
-              <option value="squadra"> </option>
-            <optgroup label="Centrocampisti" id="optRosaCentrocampisti"></optgroup>
-              <option value="squadra"> </option>
-            <optgroup label="Attaccanti" id="optRosaAttaccanti"></optgroup>
-        </select>
           
+         <br>
+         <form role="form"  action="controller.php" method="post" onsubmit="return salvaModificheRosa();">
+         <input type="hidden" name="metodo" value="setGiocatoriRosa">
+          <select class="form-control" name="giocatoriRosa[]" id="selectGiocatoriRosa" size="20"  multiple onDblClick="venditaFantamilioni(this);" onchange="" > 
+            <optgroup label="rosaPortieri" id="optRosaPortieri"></optgroup>
+            <optgroup label="Difensori" id="optRosaDifensori"></optgroup>
+            <optgroup label="Centrocampisti" id="optRosaCentrocampisti"></optgroup>
+            <optgroup label="Attaccanti" id="optRosaAttaccanti"></optgroup>
+          </select>
+         
+         <input  type="Submit" value="Salva Rosa" class="btn btn-default">
+        </form>  
           
       </div>
       <div  class="col-md-3"> 
@@ -41,7 +41,8 @@
         <form role="form" method="POST" action="controller.php">
           <p> <h3> Fantamilioni</h3> </p>
           <p><h4 name="salvaFantamilioni"  id="fantamilioni">0</h4></p>
-          <p> <input  type="button" value="Salva Modifiche" onclick("calcolaFantamilioni()") class="btn btn-default"></p>
+          <p></p>
+           <p> <input  type="button" value="crea" onClick="creaTemp()" class="btn btn-default"></p>
         </form>
       </div>
 
