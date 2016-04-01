@@ -1,5 +1,5 @@
 <div class="row">
-  <div class=".container-fluid col-md-* center" id="login" style="float:center" >
+  <div class=".container-fluid col-md-8 col-sm-8 center" id="login" >
  
     <h2 id="loginIntestazione">Registrazione</h2><BR/>
     <form role="form" method="POST" action="controller.php">

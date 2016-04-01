@@ -4,6 +4,6 @@
 <body>
 	<div class="jumbotron">
 	    <div class="container text-center">
-	      <img id="immLogo" src="image/logoLungoSMALL.png" alt="UFL - University Fanta League">
+	     <a href="controller.php"> <img id="immLogo" src="image/logoLungoSMALL.png" alt="UFL - University Fanta League" ></a>
 	    </div>
 	</div>

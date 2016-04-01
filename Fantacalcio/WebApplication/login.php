@@ -22,7 +22,7 @@
           </div>
         </form>
         
-        <form role="form" method="POST" action="controller.php">
+        <form role="form" method="GET" action="controller.php">
           <div >
           <input type="hidden" name="metodo" value="stampaRegistrazione">
             <input  type="submit" value="Registrati" class="btn btn-default">

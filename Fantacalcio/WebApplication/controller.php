@@ -2,7 +2,6 @@
 //il file controller si occupa di gestire tutti i servizi necessari al funzionamento di UFL
 
 session_start();
-
 include 'db.php'; //file database
 include 'model.php'; //modello dei dati, consente le chiamate al database
 include 'vista.php'; //include le funzioni grafiche per stampare il corpo delle pagine web di UFL
@@ -18,11 +17,10 @@ if (array_key_exists('metodo', $_GET))
 					stampaCreaFormazione();
 					
 					break;
+
 			case 'creaFantasquadra';
 				stampaRosaPage();
 			break;
-			case 'miaFantasquadra';
-				stampaMiaRosaPage();
 			break;
 			case 'formazioneUtenteLoggato';
 				stampaFormazionePage();
@@ -32,7 +30,8 @@ if (array_key_exists('metodo', $_GET))
 			//rimuovo tutte le variabili di sessione e la distruggo
 				session_unset();
 				session_destroy(); 
-				stampaHomePage();
+				$_SESSION['loggato']="";
+				header('Location: controller.php');
 				break;
 			case 'stampaRegistrazione';
 				stampaRegistrazione(0);
@@ -44,90 +43,94 @@ if (array_key_exists('metodo', $_GET))
 			case '';
 						stampaHomePage();
 			break;
+			case 'miaFantasquadra':
+				stampaMiaRosaPage();
+				break;
 			}
 
 
 else if (array_key_exists('metodo', $_POST))
 	switch($_POST['metodo']){
-		case 'login';
+		case 'login':
 	//login per gli utenti. Apre la session e la imposto per l utente loggato
 				if (verUtente($_POST['utente'], $_POST['password'])) //chiamata a model
 				{	//elaboro
 						stampaCreaFormazione(); //stampo su vista.php il risultato
 				}
 				else {
-					echo "errore Login";
-					stampaHomePage();
+					stampaHomePage(1);
 				}
 				break;
-		case 'loginAdmin';
+		case 'loginAdmin':
 	//login per lamministratore -------dacompletare
 			if ($utenteConnesso=verAdmin($_POST['utente'], $_POST['password']))
 			{	$_SESSION['loggato']=$utenteConnesso;
-				creaGraficaAdmin(false, "");
+				//creaGraficaAdmin("");
 			}
 			else {
 
 			}
 			break;
-		case 'caricaCalendario';
+		case 'caricaCalendario':
 	//carica il calendario tramite un file 
 				caricaCal($_POST['fileCalendario']);
 				break;
-		case 'caricaArchivioGiocatori';
+		case 'caricaArchivioGiocatori':
 	//servizio crea un Archivio di Giocatori da un file 
 				caricaGiocatori(peoCsvtoArray($_POST['fileGiocatori']));
 				break;
-		case 'rosaPage';
+		case 'rosaPage':
 	//servizio vista: crea pagina per composizione della rosa
 				break;
-		case 'classificaLegaPage';
+		case 'classificaLegaPage':
 				break;
-		case 'utentePage';
+		case 'utentePage':
 	//servizio vista: crea pagina post login per l admin
-				creaGraficaAdmin();
+				creaGraficaAdmin("");
 				break;
 		
-		case 'getSquadre';
+		case 'getSquadre':
 	//servizio model: ritorna le squadre dei giocatori presenti in archivio
 				header('Content-Type: application/json; charset=UTF8');
 				echo getTutteLeSquadre();
 				break;
-		case 'getGiocatoriSquadra';
+		case 'getGiocatoriSquadra':
 		//chiamata ajax: json risponde con la lista di giocatori
 		//setto il content-type per evitare i valori nulli per json
 				header('Content-Type: application/json; charset=UTF8');
 				echo (getGiocatoriSquadra($_POST['squadra']));
 				break;
-		case 'getInformazioniGiocatore';
+		case 'getInformazioniGiocatore':
 				header('Content-Type: application/json; charset=UTF8');
 				echo (getInformazioniGiocatore($_POST['calciatore']));
 				break;
-		case 'getFantamilioni';
+		case 'getFantamilioni':
 				header('Content-Type: application/json; charset=UTF8');
 				echo (getFantamilioni($_SESSION['loggato']));
 				break;
-		case 'setGiocatoriRosa';
+		case 'setGiocatoriRosa':
 				if(isset($_POST['giocatoriRosa'])){
 				if (insertGiocatoriRosa($_SESSION['loggato'], $_POST['giocatoriRosa']))
-					{echo "caricamento effettuato";}
+					{//header('Location: controller.php');
+						setFantamilioni($_POST['fantamilion']);
+						echo $_POST['fantamilion'];}
 			}
 		break;
 		
-		case 'registrazione';
+		case 'registrazione':
 				registraUtente($_POST['matricolaUtente'], $_POST['nomeUtente'], $_POST['cognomeUtente'], $_POST['emailUtente'], $_POST['passwordUtente'], $_POST['facoltaUtente']);
 				stampaHomePage();
 		break;
-		case 'getFacolta';
+		case 'getFacolta':
 				header('Content-Type: application/json; charset=UTF8');
 				echo getFacolta();
 		break;
 		case 'uploadPagelle';
 				
 		break;
-			case 'avviaLeghe';
+			case 'avviaLeghe':
 				if (avviaLegaAteneo(getAdmin($_SESSION['loggato'])))
-					creaGraficaAdmin(true, "");
+					creaGraficaAdmin("");
 		break;
 			case 'fantaOn';
 				
@@ -135,48 +138,80 @@ else if (array_key_exists('metodo', $_POST))
 			case 'fantaOff';
 				
 		break;
-			case 'uploadCalendario';
+			case 'uploadCalendario':
 				if(isset($_FILES['fileCalendario']))
 					caricaCal($_FILES['fileCalendario']['tmp_name']);
 
 		break;
-			case 'uploadGiocatori';
+		case 'storeVotoFormazione':
+			header('Location: controller.php');
+			print_r($_POST);
+		break;
+			case 'uploadGiocatori':
 			print_r($_FILES['fileGiocatori']);
 				if(isset($_FILES['fileGiocatori']))
 					if (caricaGiocatori($_FILES['fileGiocatori']['tmp_name']))
-						creaGraficaAdmin(true, "Giocatori caricati!");
+						creaGraficaAdmin("Giocatori caricati!");
 					
 				break;
-			case 'getSquadraUtente';
+			case 'getSquadraUtente':
 					header('Content-Type: application/json; charset=UTF8');
 					if ($x = getSquadraUtente($_SESSION['loggato']))
 							echo $x;
 					
 				break;
-				case 'getNomeSquadraUtente';
+				case 'getNomeSquadraUtente':
 					header('Content-Type: application/json; charset=UTF8');
 					if ($x = getNomeSquadraUtente($_SESSION['loggato']))
 							echo $x;
-					
 				break;
 				
-				case 'setGiocatoriFormazione';
-				print_r ($_POST);
+				case 'setGiocatoriFormazione':
 				if (setGiocatoriFormazioneGiornata($_SESSION['loggato'], $_POST['giocatoriTitolari'], $_POST['giocatoriPanchinari'],$_SESSION['modulo']=$_POST['modulo']))
-					{echo "caricamento effettuato";}
+					{header('Location: controller.php');}
 			break;
-			case 'caricaPagelle';
+			case 'caricaPagelle':
 					caricaPagelle($_FILES['filePagelle']);
 						echo "caricamento effettuato";
+						//avanza giornata
+						//riporta alla home
+						creaGraficaAdmin("Caricamento pagelle effettuato");
 			break;
-			case 'getFormazioneUtente';
+			case 'getFormazioneUtente':
 			header('Content-Type: application/json; charset=UTF8');
 				if ($x=getFormazioneUtenteModel($_SESSION['loggato']))
 					echo $x;
 			break;
+			case 'getVotoUltimaFormazione':
+			header('Content-Type: application/json; charset=UTF8');
+				if ($x=getVotoUltimaFormazione($_SESSION['loggato']))
+					echo $x;
+			break;
+			case '':
+			 	echo "xciao";
+			 default;
+
+				
+
 
 	}
-else stampaHomePage();
+
+else switch ($_SESSION['loggato']) {
+							
+			 			case null: stampaHomePage("");
+			 			break;
+						case getAdmin($_SESSION['loggato']):
+							echo "admin";
+							creaGraficaAdmin("");
+							break;
+						default:
+						
+							stampaMiaRosaPage();
+							
+							
+							break;
+
+	}
 
 
 

@@ -34,7 +34,7 @@
               <optgroup label="Attaccanti" id="optFormazioneAttaccanti"></optgroup>
             </select>
       
-          <input  type="Submit" value="Salva Formazione"  class="btn btn-default">
+          <input  type="Submit" value="Salva Titolari"  class="btn btn-default">
         
           <script type="text/javascript"> getSquadraUtente();
           getNomeSquadraUtente();</script>
@@ -50,6 +50,7 @@
             </select>
             <input  type="Submit" value="Salva Tutto" id="butSalvaTutto" disabled class="btn btn-default">
     </div>
+    <script type="text/javascript"> (riempiFormazioneSelect());</script>
       </form>  
 
 

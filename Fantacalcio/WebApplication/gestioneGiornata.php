@@ -109,7 +109,7 @@ return $result;
 
 //ritorna il numero di giornate della lega Ateneo corrente
 function getNumeroGiornate(){
-   $sql="SELECT numero FROM Giornata WHERE lega LIKE ".$_SESSION['loggatoFacolta']." AND incorso LIKE 1" ;
+   $sql="SELECT DISTINCT numero FROM Giornata WHERE lega LIKE ".$_SESSION['loggatoFacolta']." AND incorso LIKE 1" ;
   $conn=getDatabase();
   $result= mysqli_query($conn, $sql) or die ("Errore query get numero Giornata Corrente\n ");
    $row=mysqli_fetch_assoc($result);

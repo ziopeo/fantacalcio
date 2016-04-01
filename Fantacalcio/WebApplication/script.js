@@ -24,7 +24,7 @@ function loginAja() {
     }
 
 
-    function connectAj()
+    function connectAj(parametri)
 {
          xmlhttp = new XMLHttpRequest();
          
@@ -55,7 +55,7 @@ function caricaInformazioniGiocatore(giocatore){
     xml.onreadystatechange= function(){
                         if (xml.readyState == 4 && xml.status == 200) {
                         var x=JSON.parse(xml.responseText);
-                           eelemento.textContent="Nome: " + x[0].nome+ "Prezzo Attuale: "+ x[0].prezzoAttuale+"Ruolo: "+ x[0].ruolo+"Squadra: "+ x[0].squadra ;
+                           eelemento.innerHTML="<p>Nome: " + x[0].nome+ "<p>Prezzo Attuale: "+ x[0].prezzoAttuale+"<p>Ruolo: "+ x[0].ruolo+"<P>Squadra: "+ x[0].squadra ;
                         }
                                     }
 }
@@ -74,28 +74,21 @@ while (x.hasChildNodes()) {
 } 
 
 
-}   
-function caricaGiocatori(squadra)
+}  
+
+
+//-------------------------------------
+
+function caricaGiocatoriUtente()
     {  
-        var portieriopt=document.getElementById("optPortieri");
-        var difensoriopt=document.getElementById("optDifensori");
-        var centrocampistiopt=document.getElementById("optCentrocampisti");
-        var attaccantiopt=document.getElementById("optAttaccanti");
-        //var squadra=document.getElementById("selectSquadra");
-        var eelemento=document.getElementById("selectGiocatore");
-        var elemento=document.getElementById("selectGiocatoriRosa");
-        var xml =connectA("metodo=getGiocatoriSquadra&squadra="+squadra);
-        resetSelect(portieriopt);
-        resetSelect(difensoriopt);
-        resetSelect(centrocampistiopt);
-        resetSelect(attaccantiopt);
-        squadra=squadra.value;
+        var portieriopt=document.getElementById("optRosaPortieri");
+        var difensoriopt=document.getElementById("optRosaDifensori");
+        var centrocampistiopt=document.getElementById("optRosaCentrocampisti");
+        var attaccantiopt=document.getElementById("optRosaAttaccanti");
+        var xml =connectA("metodo=getSquadraUtente");
         xml.onreadystatechange= function(){
             if (xml.readyState == 4 && xml.status == 200) {
-                //resetSelect(eelemento);
-
                 var x=JSON.parse(xml.responseText);
-            
                 for (i=0;i<(x.length);i++){
                     var option= document.createElement("option");
                     option.text =x[i].nome +" ( "+ x[i].prezzoIniziale+ " )";
@@ -117,10 +110,58 @@ function caricaGiocatori(squadra)
                         default:
                             break;
                    }
-                        
-                    
+                    /*var option1=document.createElement("option");
+                    option1.text= x[i].prezzoIniziale;
+                    option.value=i+1;
+                    eelemento.add(option);*/
+                    //eelemento.add(option);
+                }
+        }
+    }
+}
+//-----------------------------------------------------
 
-                    
+
+function caricaGiocatori(squadra)
+    {  
+        var portieriopt=document.getElementById("optPortieri");
+        var difensoriopt=document.getElementById("optDifensori");
+        var centrocampistiopt=document.getElementById("optCentrocampisti");
+        var attaccantiopt=document.getElementById("optAttaccanti");
+        //var squadra=document.getElementById("selectSquadra");
+        var eelemento=document.getElementById("selectGiocatore");
+        var elemento=document.getElementById("selectGiocatoriRosa");
+        var xml =connectA("metodo=getGiocatoriSquadra&squadra="+squadra);
+        resetSelect(portieriopt);
+        resetSelect(difensoriopt);
+        resetSelect(centrocampistiopt);
+        resetSelect(attaccantiopt);
+        squadra=squadra.value;
+        xml.onreadystatechange= function(){
+            if (xml.readyState == 4 && xml.status == 200) {
+                //resetSelect(eelemento);
+                var x=JSON.parse(xml.responseText);
+                for (i=0;i<(x.length);i++){
+                    var option= document.createElement("option");
+                    option.text =x[i].nome +" ( "+ x[i].prezzoIniziale+ " )";
+                    option.value=x[i].nome+"="+x[i].prezzoIniziale+ "&id="+x[i].idGiocatore+ "&ruolo="+ x[i].ruolo;
+                    switch (x[i].ruolo){
+                        case "P" : 
+                                portieriopt.appendChild(option);
+                            break;
+                        case "D":
+                                
+                                difensoriopt.appendChild(option);
+                            break;
+                        case "C":
+                                centrocampistiopt.appendChild(option);
+                            break;
+                        case "A":
+                                attaccantiopt.appendChild(option);
+                            break;
+                        default:
+                            break;
+                   }
                     /*var option1=document.createElement("option");
                     option1.text= x[i].prezzoIniziale;
                     option.value=i+1;
@@ -424,6 +465,10 @@ function arrayToJson(array)
 function salvaModificheRosa()
 {
     var sel= document.getElementById("selectGiocatoriRosa");
+    var inpFan=document.getElementById("fantamilioni");
+    var inpHid= document.getElementById("fantamilion");
+    inpHid.value= (inpFan.textContent);
+    console.log(inpHid.value);
     var x=""; var c=0;
     var prep=new Array();var k=sel.options.length;
    if (k==25){ 
@@ -439,7 +484,7 @@ function salvaModificheRosa()
         return true;
         } 
     else
-    {alert('devi scegliere 25 giocatori tra cui: 3 portieri, 8 difensori, 8 centrocampisti, 8 attaccanti');
+    {alert('devi scegliere 25 giocatori tra cui: 3 portieri, 8 difensori, 8 centrocampisti, 6 attaccanti');
    return false;
    }
 }
@@ -474,7 +519,6 @@ che serve poi per visualizzare i giocatori da acquistare
         }
     }
 }
-
 
 
 function AjaxModel()
@@ -540,6 +584,13 @@ function caricaPerFormazione(arra, x, para)
          break;
          case 2:
          (x[i].childNodes[0].nodeValue=arra[i].squadra);
+        break;
+        case 3:
+        var xxx=arra[i].voto
+        if (xxx!=null)
+         (x[i].childNodes[0].nodeValue=xxx);
+        else
+            (x[i].childNodes[0].nodeValue="0.0");
         break;
         }
     }
@@ -626,7 +677,6 @@ function getSquadraUtente()
                 resetSelect(centrocampistiopt);
                 resetSelect(attaccantiopt);
                 for (i=0;i<(x.length);i++){
-                    debugger;
                     var option= document.createElement("option");
                     option.text =x[i].nome +" ( "+ x[i].squadra+ " )";
                     option.value=x[i].nome+"="+x[i].prezzoIniziale+ "&id="+x[i].idGiocatore+ "&ruolo="+ x[i].ruolo;
@@ -652,6 +702,50 @@ function getSquadraUtente()
 }
 }
 
+//carica la select nel caso l'utente abbia gia scelto una fantasquadra
+function getRosa()
+{
+    var portieriopt=document.getElementById("optPortieri");
+        var difensoriopt=document.getElementById("optDifensori");
+        var centrocampistiopt=document.getElementById("optCentrocampisti");
+        var attaccantiopt=document.getElementById("optAttaccanti");
+        var eelemento=document.getElementById("selectGiocatore");
+        var elemento=document.getElementById("selectFormazione");
+        var fantamilioni=document.getElementById
+   var xml=connectA("metodo=getSquadraUtente");
+    xml.onreadystatechange = function (){
+    if (xml.readyState == 4 && xml.status == 200) {
+          
+          var x=JSON.parse(xml.responseText);
+                resetSelect(portieriopt);
+                resetSelect(difensoriopt);
+                resetSelect(centrocampistiopt);
+                resetSelect(attaccantiopt);
+                for (i=0;i<(x.length);i++){
+                    var option= document.createElement("option");
+                    option.text =x[i].nome +" ( "+ x[i].squadra+ " )";
+                    option.value=x[i].nome+"="+x[i].prezzoIniziale+ "&id="+x[i].idGiocatore+ "&ruolo="+ x[i].ruolo;
+                    switch (x[i].ruolo){
+                        case "P" : 
+                                portieriopt.appendChild(option);
+                            break;
+                        case "D":
+                                
+                                difensoriopt.appendChild(option);
+                            break;
+                        case "C":
+                                centrocampistiopt.appendChild(option);
+                            break;
+                        case "A":
+                                attaccantiopt.appendChild(option);
+                            break;
+                        default:
+                            break;
+                   }
+                    }
+     }  
+}
+}
 
 
 
@@ -958,7 +1052,7 @@ switch (parametro){
                 break;
                 }i++;}
             break;
-    case 4:  debugger;
+    case 4:  
         while (i<y.length){
             s=gFS(y[i],1);
             if (s==nome)
@@ -999,7 +1093,7 @@ function salvaModificheFP()
     
     else if(!tit.disabled){
             if(salvaModificheFormazione(tit))
-                {debugger;
+                {
                     selTutti(tit);
                     but.disabled=false;
                 return false; }
@@ -1084,15 +1178,23 @@ function caricaFormazionePage()
                 else if (t[prop].tipoSchieramento==1)
                     tit.push(t[prop]);}
             caricaTitolariFormazioneUtente(tit);
-            caricaPanchinaFormazione(pan);
-
+            caricaPanchinaFormazione(pan);}
+            }
+            caricaVoto();
+            
 }
-
-
+function caricaVoto()
+{   var voto= document.getElementById("VotoPagellaTotale");
+    var xml=connectA("metodo=getVotoUltimaFormazione");
+    tit=new Array();
+    pan=new Array();
+    xml.onreadystatechange = function (){
+        if (xml.readyState == 4 && xml.status == 200) {
+            t=JSON.parse(xml.responseText);
+            voto.textContent=   (t[0].sommavoto);
+            }
 }
 }
-
-
 
 
 function caricaPanchinaFormazione(t)
@@ -1129,25 +1231,98 @@ var attaccanti=new Array; var prop;
                             }
                     }
                 caricaPerFormazione(portieri, por.getElementsByClassName("portierePanchina"), 0);
-                caricaPerFormazione(portieri, cp.getElementsByClassName("VotoPagellaPortierePanchina"), 1);
+                caricaPerFormazione(portieri, cp.getElementsByClassName("VotoPagellaPortierePanchina"), 3);
                 caricaPerFormazione(portieri, sp.getElementsByClassName("squadraPortierePanchina"), 2);
 
 
                 caricaPerFormazione(difensori, dif.getElementsByClassName("difensorePanchina"), 0);
-                caricaPerFormazione(difensori, cd.getElementsByClassName("VotoPagellaDifensorePanchina"), 1);
+                caricaPerFormazione(difensori, cd.getElementsByClassName("VotoPagellaDifensorePanchina"), 3);
                 caricaPerFormazione(difensori, sd.getElementsByClassName("squadraDifensorePanchina"), 2);
 
                 caricaPerFormazione(centrocampisti, cen.getElementsByClassName("centrocampistaPanchina"), 0);
-                caricaPerFormazione(centrocampisti, cc.getElementsByClassName("VotoPagellaCentrocampistaPanchina"), 1);
+                caricaPerFormazione(centrocampisti, cc.getElementsByClassName("VotoPagellaCentrocampistaPanchina"), 3);
                 caricaPerFormazione(centrocampisti, sc.getElementsByClassName("squadraCentrocampistaPanchina"), 2);
 
                 caricaPerFormazione(attaccanti, att.getElementsByClassName("attaccantePanchina"), 0);
-                caricaPerFormazione(attaccanti, ca.getElementsByClassName("VotoPagellaAttaccantePanchina"), 1);
+                caricaPerFormazione(attaccanti, ca.getElementsByClassName("VotoPagellaAttaccantePanchina"), 3);
                 caricaPerFormazione(attaccanti, sa.getElementsByClassName("squadraAttaccantePanchina"), 2);
 
             }                   
-         
+function calcolaV()
+{
+    setTimeout(calcolaVoto, 1);
+}   
+function calcolaVoto()
+{
+var cp= document.getElementById("VotoPagellaPortieri");
+var cd= document.getElementById("VotoPagellaDifensori");
+var cc= document.getElementById("VotoPagellaCentrocampisti");
+var ca= document.getElementById("VotoPagellaAttaccanti");
+var cpp= document.getElementById("VotoPagellaPortieriPanchina");
+var cdp= document.getElementById("VotoPagellaDifensoriPanchina");
+var ccp= document.getElementById("VotoPagellaCentrocampistiPanchina");
+var cap= document.getElementById("VotoPagellaAttaccantiPanchina"); 
+var x;
+var somma=0;
 
+
+//calcolo voto portiere e sostituzione con portiere panchinaro
+var x = parseFloat(cp.childNodes[1].textContent);
+if (x==0.0) {   
+    cp.childNodes[1].textContent="^";
+    somma+=parseFloat(cpp.childNodes[1].textContent);
+    }
+
+
+//calcolo voto difensori e sostituzione con panchinaro in caso di non voto fino a un massimo di 
+//panchinari per ruolo tranne il portiere
+var a=0; //contatore dei panchinari
+for (prop in cd.childNodes)
+{    
+    x = (cd.childNodes[prop].textContent);
+    if (x!=undefined)
+        if(x==0.0 && a<2){
+           somma+=parseFloat(cdp.childNodes[a].textContent);
+           a++;
+           cd.childNodes[prop].textContent="^"; }
+        else if (x>0.0){
+            somma+=parseFloat(x); }    
+}
+
+//calcolo voto centrocampisti e sostituzione
+a=0; //contatore dei panchinari
+for (prop in cc.childNodes)
+{    
+    x = (cc.childNodes[prop].textContent);
+    if (x!=undefined)
+        if(x==0.0 && a<2){
+           somma+=parseFloat(ccp.childNodes[a].textContent);
+           a++;
+           cc.childNodes[prop].textContent="^"; }
+        else if (x>0.0){
+            somma+=parseFloat(x); }    
+}
+
+// calcolo voto attanccanti e sostituzione 
+a=0; //contatore dei panchinari
+for (prop in ca.childNodes)
+{    
+    x = (ca.childNodes[prop].textContent);
+    if (x!=undefined)
+        if(x==0.0 && a<2){
+           somma+=parseFloat(cap.childNodes[a].textContent);
+           a++;
+           ca.childNodes[prop].textContent="^"; }
+        else if (x>0.0){
+            somma+=parseFloat(x); }    
+}
+
+
+            connectAj("metodo=storeVotoFormazione&voto="+somma);
+//store somma voti nel datab
+
+
+}
 
 function caricaTitolariFormazioneUtente(t){
 
@@ -1188,26 +1363,118 @@ var attaccanti=new Array; var prop;
                             }
                     }
 
-                    caricaPerFormazione(portieri, por.getElementsByClassName("portiere"), 0);
-                    caricaPerFormazione(portieri, cp.getElementsByClassName("VotoPagellaPortiere"), 1);
-                    caricaPerFormazione(portieri, sp.getElementsByClassName("squadraPortiere"), 2);
+caricaPerFormazione(portieri, por.getElementsByClassName("portiere"), 0);
+caricaPerFormazione(portieri, cp.getElementsByClassName("VotoPagellaPortiere"), 3);
+caricaPerFormazione(portieri, sp.getElementsByClassName("squadraPortiere"), 2);
 
 
-                    caricaPerFormazione(difensori, dif.getElementsByClassName("difensore"), 0);
-                    caricaPerFormazione(difensori, cd.getElementsByClassName("VotoPagellaDifensore"), 1);
-                    caricaPerFormazione(difensori, sd.getElementsByClassName("squadraDifensore"), 2);
+caricaPerFormazione(difensori, dif.getElementsByClassName("difensore"), 0);
+caricaPerFormazione(difensori, cd.getElementsByClassName("VotoPagellaDifensore"), 3);
+caricaPerFormazione(difensori, sd.getElementsByClassName("squadraDifensore"), 2);
 
-                    caricaPerFormazione(centrocampisti, cen.getElementsByClassName("centrocampista"), 0);
-                    caricaPerFormazione(centrocampisti, cc.getElementsByClassName("VotoPagellaCentrocampista"), 1);
-                    caricaPerFormazione(centrocampisti, sc.getElementsByClassName("squadraCentrocampista"), 2);
+caricaPerFormazione(centrocampisti, cen.getElementsByClassName("centrocampista"), 0);
+caricaPerFormazione(centrocampisti, cc.getElementsByClassName("VotoPagellaCentrocampista"), 3);
+caricaPerFormazione(centrocampisti, sc.getElementsByClassName("squadraCentrocampista"), 2);
 
-                    caricaPerFormazione(attaccanti, att.getElementsByClassName("attaccante"), 0);
-                    caricaPerFormazione(attaccanti, ca.getElementsByClassName("VotoPagellaAttaccante"), 1);
-                    caricaPerFormazione(attaccanti, sa.getElementsByClassName("squadraAttaccante"), 2);
+caricaPerFormazione(attaccanti, att.getElementsByClassName("attaccante"), 0);
+caricaPerFormazione(attaccanti, ca.getElementsByClassName("VotoPagellaAttaccante"), 3);
+caricaPerFormazione(attaccanti, sa.getElementsByClassName("squadraAttaccante"), 2);
 
-                } 
+} 
 
                      
-                     
+function riempiFormazioneSelect()
+{
+    setTimeout(riempiFormazione, 1000);
+}
+
+function riempiFormazione()
+{
+tit=new Array();
+pan=new Array();
+var xml=connectA("metodo=getFormazioneUtente");
+xml.onreadystatechange = function (){
+        if (xml.readyState == 4 && xml.status == 200) {
+            t=JSON.parse(xml.responseText);
+            console.log(t);
+            for( prop in t){
+                if(t[prop].tipoSchieramento==0)
+                    pan.push(t[prop]);
+                else if (t[prop].tipoSchieramento==1)
+                    tit.push(t[prop]); }
+
+        }
+    }
+    debugger;
+    caricaFormazioneTitolare(tit);
+    caricaFormazionePanchina(pan);
+}
 
 
+
+
+
+
+
+
+function caricaFormazioneTitolare(x)
+{
+        var portieriopt=document.getElementById("optFormazionePortieri");
+        var difensoriopt=document.getElementById("optFormazioneDifensori");
+        var centrocampistiopt=document.getElementById("optFormazioneCentrocampisti");
+        var attaccantiopt=document.getElementById("optFormazioneAttaccanti");
+                for (i=0;i<(x.length);i++){
+                    var option= document.createElement("option");
+                    option.text =x[i].nome +" ( "+ x[i].squadra+ " )";
+                    option.value=x[i].nome+"="+x[i].prezzoIniziale+ "&id="+x[i].idGiocatore+ "&ruolo="+ x[i].ruolo;
+debugger;
+                    switch (x[i].ruolo){
+                        case "P" : 
+                                portieriopt.appendChild(option);
+                            break;
+                        case "D":
+                                
+                                difensoriopt.appendChild(option);
+                            break;
+                        case "C":
+                                centrocampistiopt.appendChild(option);
+                            break;
+                        case "A":
+                                attaccantiopt.appendChild(option);
+                            break;
+                        default:
+                            break;
+                   }
+                }
+}
+
+function caricaFormazionePanchina(x)
+{
+        var portieriopt=document.getElementById("optPanchinaPortieri");
+        var difensoriopt=document.getElementById("optPanchinaDifensori");
+        var centrocampistiopt=document.getElementById("optPanchinaCentrocampisti");
+        var attaccantiopt=document.getElementById("optPanchinaAttaccanti");
+                for (i=0;i<(x.length);i++){
+                    var option= document.createElement("option");
+                    option.text =x[i].nome +" ( "+ x[i].squadra+ " )";
+                    option.value=x[i].nome+"="+x[i].prezzoIniziale+ "&id="+x[i].idGiocatore+ "&ruolo="+ x[i].ruolo;
+
+                    switch (x[i].ruolo){
+                        case "P" : 
+                                portieriopt.appendChild(option);
+                            break;
+                        case "D":
+                                
+                                difensoriopt.appendChild(option);
+                            break;
+                        case "C":
+                                centrocampistiopt.appendChild(option);
+                            break;
+                        case "A":
+                                attaccantiopt.appendChild(option);
+                            break;
+                        default:
+                            break;
+                   }
+                }
+}

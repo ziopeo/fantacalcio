@@ -19,7 +19,7 @@ function insertGiocatoriRosa($utente, $giocatoriJSON)
 {foreach ($giocatoriJSON as $selected_option) {
     	$t=explode("&", $selected_option);
 		$te=explode("=", $t[1]);
-	echo	$sql='INSERT INTO `Acquistato`(`idFantagiocatore`, `idSquadra`) VALUES ('.($te[1]).',"'.$utente.'")';
+		$sql='INSERT INTO `Acquistato`(`idFantagiocatore`, `idSquadra`) VALUES ('.($te[1]).',"'.$utente.'")';
 	
 	$conn=getDatabase();
 	mysqli_query($conn, $sql) or die("errore creazione squadra\n");
@@ -107,15 +107,20 @@ function creaFormazione($utente, $giornata, $modulo, $dataConsegna)
 	mysqli_query($conn, $sql) or die("errore creazione Formazione\n");
 	return $conn->insert_id;
 }
-
-
-
-function getFormazioneUtenteModel($utente)
-{
-
-	$sql='Select nome, ruolo, squadra, tipoSchieramento  FROM Formazione, Schierato, Giocatore WHERE Schierato.Formazione = (
+function getVotoUltimaFormazione($utente){
+$sql ='SELECT SUM(sq1.voto) as sommavoto FROM (SELECT sq.*, voto as voto FROM (Select idGiocatore as idGiocatore, nome as nome, ruolo as ruolo, squadra as squadra, tipoSchieramento as tipoSchieramento FROM Formazione, Schierato, Giocatore WHERE Schierato.Formazione = (
 SELECT MAX(idFormazione) FROM Formazione, Utente WHERE UTENTE LIKE "'.$utente. '") AND Formazione.idFormazione =(
-SELECT MAX(idFormazione) FROM Formazione, Utente WHERE UTENTE LIKE "'.$utente.'") AND Giocatore.idGiocatore LIKE Schierato.Giocatore';
+SELECT MAX(idFormazione) FROM Formazione, Utente WHERE UTENTE LIKE "'.$utente. '") AND Giocatore.idGiocatore LIKE Schierato.Giocatore) AS sq LEFT JOIN PagellaGiocatore ON(sq.idGiocatore = PagellaGiocatore.giocatore)) as sq1';
+$conn=getDatabase();
+$result= mysqli_query($conn, $sql) or die ("Errore: non esiste somma formazione\n ");
+return json_encode(jsonpreformat($result));
+}
+function getFormazioneUtenteModel($utente)
+{ $sql='SELECT sq.*, voto FROM (Select idGiocatore as idGiocatore, nome as nome, ruolo as ruolo, squadra as squadra, tipoSchieramento as tipoSchieramento FROM Formazione, Schierato, Giocatore WHERE Schierato.Formazione = (
+SELECT MAX(idFormazione) FROM Formazione, Utente WHERE UTENTE LIKE "'.$utente. '") AND Formazione.idFormazione =(
+SELECT MAX(idFormazione) FROM Formazione, Utente WHERE UTENTE LIKE "'.$utente. '") AND Giocatore.idGiocatore LIKE Schierato.Giocatore) AS sq LEFT JOIN PagellaGiocatore ON(sq.idGiocatore = PagellaGiocatore.giocatore)';
+
+	
 	$conn=getDatabase();
 
 

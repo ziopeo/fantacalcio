@@ -36,32 +36,44 @@ function verUtente($ut, $pa){
 	$row=mysqli_fetch_assoc($result);
 	$_SESSION['loggato']=$row['matricola'];
 	$_SESSION['loggatoFacolta']=$row['lega'] ;
-return true;
+if ($_SESSION['loggato']=="") 
+	return false;
+else return true;
 }
 
 
 
 
-function getFantamilioni($utente)
-{
-	$sql="SELECT `fantamilioni` FROM Utente WHERE `matricola`='$utente'" or die ("Errore query get id ateneo corrente\n ");
+function getFantamilioni()
+{	$utente=$_SESSION['loggato'];
+	$sql="SELECT `fantamilioni` FROM Utente WHERE `matricola`='$utente'" or die ("Errore get fantamilioni\n ");
 	$conn=getDatabase();
 	$result= mysqli_query($conn, $sql);
 	$row=mysqli_fetch_assoc($result);
 return $row['fantamilioni'];	
+}
+function setFantamilioni($fantamilioni)
+{	$utente=$_SESSION['loggato'];
+	$sql="UPDATE `Utente` SET  `fantamilioni`='$fantamilioni' WHERE `matricola`='$utente'" or die ("Errore update fantamilioni\n ");
+	$conn=getDatabase();
+return mysqli_query($conn, $sql);	
 }
 
 
 //getAdmin: ritorna l'id dell'admin della lega corrente
 function getAdmin($admin)
 {
-	$sql="SELECT `idAdmin`FROM `Admin` WHERE `email`='$admin' ";
+	$sql="SELECT `idAdmin`, `email`FROM `Admin` WHERE `email`='$admin' ";
 	$conn=getDatabase();
 $result= mysqli_query($conn, $sql)or die ("Errore query get admin\n ");
 $row=mysqli_fetch_assoc($result);
-return $row['idAdmin'];
+return $row['email'];
 
 }
+function getUtente()
+{
+	return $_SESSION['loggato'];
 
+}
 
 ?>
