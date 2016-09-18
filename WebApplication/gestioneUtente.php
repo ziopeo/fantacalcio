@@ -1,17 +1,15 @@
 <?php
 
 
-function registraUtente($matricola, $nome, $cognome, $email, $password, $idFacolta){
-       $sqlutente='INSERT INTO `Utente`(`matricola`, `nome`, `cognome`, `email`,  `fantamilioni`, `pass`) VALUES ("'.$matricola.'","'.$nome.'","'.$cognome.'","'.$email.'",300,"'.$password.'")';
-	$sqlclassifica='INSERT INTO `ClassificaFacolta`( `squadra`, `lega`, `punti`) VALUES ("'.$matricola.'",'.$idFacolta.',0)';
-	echo $sqlutente;//CANC
-	echo $sqlclassifica;
+function registraUtente($matricola, $nome, $cognome, $email, $password, $idFacolta, $squadra){
+	$res=true;
+       $sqlutente="INSERT INTO `Utente`(`matricola`, `nome`, `cognome`, `email`,  `fantamilioni`, `pass`, `nomefantasquadra`) VALUES ('$matricola','$nome','$cognome','$email',300,'$password','$squadra')";
+	$sqlclassifica="INSERT INTO `ClassificaFacolta`( `squadra`, `lega`, `punti`) VALUES ('$matricola','$idFacolta',0)";
 	$conn=getDatabase();
-	$result =mysqli_query($conn, $sqlutente) or die ("Errore query insert utente\n ");
-	$id=$conn->insert_id;
-	mysqli_query($conn, $sqlclassifica) or die ("Errore query insert utente in classifica\n ");
+	$result =mysqli_query($conn, $sqlutente)or $res=false ;
+	mysqli_query($conn, $sqlclassifica) or $res=false;
 	
-	return $id;
+	return $res;
 }
 
 
@@ -22,7 +20,10 @@ function verAdmin($ut, $pa){
 	$conn=getDatabase();
 	$result= mysqli_query($conn, $sql) or die ("Errore query verifica admin\n ");
 	$row=mysqli_fetch_assoc($result);
-return $row['email'];
+$_SESSION['loggato']= $row['email'];
+if ($_SESSION['loggato']=="") 
+	return false;
+else return true;
 }
 
 
@@ -30,7 +31,7 @@ return $row['email'];
 //verifica login con nome utente e password
 //ritorna true se presente e falso se no;
 function verUtente($ut, $pa){
-	$sql="SELECT matricola FROM Utente WHERE email LIKE '$ut' AND pass LIKE '$pa' OR matricola='$ut' AND pass ='$pa'" ;
+	$sql="SELECT matricola, lega FROM Utente, ClassificaFacolta WHERE email LIKE '$ut' AND pass LIKE '$pa' AND squadra LIKE matricola OR matricola='$ut' AND pass ='$pa' AND squadra LIKE matricola" ;
 	$conn=getDatabase();
 	$result= mysqli_query($conn, $sql) or die ("Errore query verifica utente\n ");
 	$row=mysqli_fetch_assoc($result);
@@ -73,6 +74,16 @@ return $row['email'];
 function getUtente()
 {
 	return $_SESSION['loggato'];
+
+}
+
+function getUtenti()
+{
+	$sql="SELECT * FROM `utente`";
+	$conn=getDatabase();
+$result= mysqli_query($conn, $sql)or die ("Errore query get admin\n ");
+$row=mysqli_fetch_assoc($result);
+return json_encode(jsonpreformat($row));;
 
 }
 

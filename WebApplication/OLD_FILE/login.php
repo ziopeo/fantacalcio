@@ -1,19 +1,35 @@
-<?php
-	session_start();
-	include("db_con.php");
-	
-	$_SESSION["user_log"]=$_POST["user_log"];
-	$_SESSION["pass_log"]=$_POST["pass_log"];
-	
-	$query = mysql_query("SELECT * FROM utenti WHERE username='".$_POST["user_log"]."' AND password='".$_POST["pass_log"]."'")
-	or DIE('query non riuscita'.mysql_error());
-	
-	if(mysql_num_rows($query)!=0){ 
-		$row = mysql_fetch_assoc($query);
-		$_SESSION["logged"] =true; 
-		header("location:home.php");
-	}
-	else{
-		echo "non ti sei registrato con successo";
-	}
-?>
+      <div class="col-md-5 col-sm-6 text-center" id="login">
+        <h2 id="loginIntestazione">LOGIN</h2><BR/>
+       
+        <form role="form" method="POST" action="controller.php">   
+          <input id="loginutenteadmin" type="hidden" name="metodo" value="login">
+          <div class="form-group" >
+            <label for="userLoginText">Email:</label>
+            <input type="text" class="form-control" name="utente" id="userLoginText" placeholder="Immetti email username o matricola">
+          </div>
+          
+          <div class="form-group " >
+              <label for="passwordLoginText">Password:</label>
+              <input type="password" name="password" class="form-control" id="passwordLoginText" placeholder="Immetti password">
+          </div>      
+          
+          <div class="checkbox">
+            <label><input type="checkbox" name ="adminCheck" id="adminCheck" onclick="cambiaUserEmailAdmin(this)"> Admin</label>
+          </div>         
+          
+          <div>
+            <input  type="submit" value="Entra" class="btn btn-default">
+          </div>
+        </form>
+        
+        <form role="form" method="GET" action="controller.php">
+          <div >
+          <input type="hidden" name="metodo" value="stampaRegistrazione">
+            <input  type="submit" value="Registrati" class="btn btn-default">
+          </div>
+        </form>
+    </div>
+
+
+
+

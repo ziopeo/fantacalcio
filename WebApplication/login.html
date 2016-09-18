@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <title>UFL Fantaleague</title>
+  <meta charset="utf-8">
+ 
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/ufl.css">
+  <script src="js/querymin.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+  
+</head>
+
+<body>
+	<div class="jumbotron">
+	    <div class="container text-center">
+	     <a href="controller.php"> <img id="immLogo" src="image/logoLungoSMALL.png" alt="UFL - University Fanta League" ></a>
+	    </div>
+	</div>
+	<!---alert-->
+	<div style="visibility:hidden" id="alertlogin" class="alert alert-danger">
+    <strong>Attenzione!</strong> <strong>Matricola o password errati</strong></div>
+<!---finealert-->
+<!---apro container-->
+    <div class="container-fluid text-center"> 
+
+    <!---apro riga-->  
+      <div class="row">
+
+
+      <!---sidebar-->
+       <div id="menu" style="float:left" class="col-md-3">
+                    <div id="regolamento">
+                        <a href="controller.php?metodo=stampaRegolamento"><img src="image/regolamento.jpg" width="177,2" height="59,1" alt="SQUADRA"/></a>  
+                    </div>
+            </div>
+<!---sidebar-->
+
+            <!---iniziologin-->
+      <div class="col-md-5 col-sm-6 text-center" id="login">
+        <h2 id="loginIntestazione">LOGIN</h2><BR/>
+       
+  
+          <input id="loginutenteadmin" type="hidden" name="metodo" value="login">
+          <div class="form-group" >
+            <label for="userLoginText">Matricola:</label>
+            <input type="text" class="form-control" name="utente" id="userLoginText" placeholder="Immetti email username o matricola">
+          </div>
+          
+          <div class="form-group " >
+              <label for="passwordLoginText">Password:</label>
+              <input type="password" name="password" class="form-control" id="passwordLoginText" placeholder="Immetti password">
+          </div>      
+          
+          <div class="checkbox">
+            <label><input type="checkbox" name ="adminCheck" id="adminCheck" onclick="cambiaUserEmailAdmin(this)"> Admin</label>
+          </div>         
+          
+          <div>
+            <button  onclick="loginAja()" class="btn btn-default">Invia</button>
+          </div>
+   
+        
+          <div >
+         
+            <button  onclick="registrazione()" class="btn btn-default">Registrati</button>
+          </div>
+    </div>
+
+
+    <!---finelogine-->
+
+    <!---chiudi riga e container-->
+    </div>
+</div>
+
+
+
+<footer class="container-fluid text-center">
+  <p>
+
+	UFL - University Fanta League  -  Progetto di Ingegneria del Software  -  Realizzato da Giuseppe Paglialonga </p>
+
+</footer>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <title>UFL Fantaleague</title>
+  <meta charset="utf-8">
+ 
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/ufl.css">
+  <script src="js/querymin.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+  
+</head>
+
+<body>
+
+  <div class="jumbotron">
+      <div class="container text-center">
+       <a href="controller.php"> <img id="immLogo" src="image/logoLungoSMALL.png" alt="UFL - University Fanta League" ></a>
+      </div>
+  </div>
+<div class="container-fluid text-center">    
+      <div class="row">
+           
+
+
+            <div id="menu" style="float:left" class="col-md-3">
+                
+                    <div id="areaUtente" disabled="true">
+                        <a href="fantamercato.html"><h2>Fantamercato</h2></a>
+                    </div>
+                    <div id="b">
+                        <a disabled href="formazione.html"><h2>Formazione</h2></a>  
+                    </div>
+                    <div id="c">
+                        <a href="fantasquadra.html"><h2>Fantasquadra</h2></a>
+                    </div>      
+                    <div id="e">
+                        <a onclick="logout()"><h2>Logout</h2></a>
+                    </div>
+                    
+                <!-- Fine frame -->
+            </div>
+
+
+  
+        
+
+      <div id="selezionaGiocatori" class="col-md-3">
+        <select class="form-control" id="selectSquadra"  onchange="caricaGiocatori(this.value)">
+          <option value="squadra">squadra</option>
+          </select> 
+        <script type="text/javascript"> getSquadre();</script>
+          <br>
+            <select class="form-control" id="selectGiocatore" size="30" onClick="caricaInformazioniGiocatore(this)" ondblclick="aggiungiArosa(this)" multiple  onchange="" > 
+             <optgroup label="Portieri" id="optPortieri"></optgroup>
+
+              <optgroup label="Difensori" id="optDifensori"></optgroup>
+
+              <optgroup label="Centrocampisti" id="optCentrocampisti"></optgroup>
+
+              <optgroup label="Attaccanti" id="optAttaccanti"></optgroup>
+            </select>
+        </div>
+      <div id="selezionaRosa" class="col-md-3">
+          
+         <br>
+         <form role="form"  action="controller.php" method="post" onsubmit="return salvaModificheRosa();">
+         
+          <h3> Fantamilioni:
+          <input type="hidden" name="fantamilion" id ="fantamilion" value="0">  
+          <h4 name="fantamilioni" id="fantamilioni">0</h4>
+          <select class="form-control" name="giocatoriRosa[]" id="selectGiocatoriRosa" size="20"  onClick="caricaInformazioniGiocatore(this)" multiple onDblClick="venditaFantamilioni(this);"  > 
+            <optgroup label="rosaPortieri" id="optRosaPortieri"></optgroup>
+            <optgroup label="Difensori" id="optRosaDifensori"></optgroup>
+            <optgroup label="Centrocampisti" id="optRosaCentrocampisti"></optgroup>
+            <optgroup label="Attaccanti" id="optRosaAttaccanti"></optgroup>
+          </select>
+         <input type="hidden" name="metodo" value="setGiocatoriRosa">
+         <input  type="Submit" onsubmit="login();"  value="Salva Rosa" class="btn btn-default">
+        </form>  
+          
+      </div>
+      <div  class="col-md-3"> 
+        <h3>Informazioni Giocatore</h3>
+        <h4  id="informazioniGiocatore"></h4>
+        <script> caricaGiocatoriUtente();</script>
+      </div>
+
+
+
+</div>
+</div>
+
+
+<footer class="container-fluid text-center">
+  <p>
+
+	UFL - University Fanta League  -  Progetto di Ingegneria del Software  -  Realizzato da Giuseppe Paglialonga </p>
+
+</footer>
+
+
+
+</body>
+</html>
+
+<script ="text/javascript">
+fantamilioni();
+</script>

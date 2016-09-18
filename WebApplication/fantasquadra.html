@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <title>UFL Fantaleague</title>
+  <meta charset="utf-8">
+ 
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/ufl.css">
+  <script src="js/querymin.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+  
+</head>
+
+<body>
+
+  <div class="jumbotron">
+      <div class="container text-center">
+       <a href="controller.php"> <img id="immLogo" src="image/logoLungoSMALL.png" alt="UFL - University Fanta League" ></a>
+      </div>
+  </div>
+<div class="container-fluid text-center">    
+      <div class="row">
+
+            <div id="menu" style="float:left" class="col-md-3">
+                
+                    <div id="areaUtente" >
+                        <a href="fantamercato.html"><h2>Fantamercato</h2></a>
+                    </div>
+                    <div id="b">
+                        <a  href="formazione.html"><h2>Formazione</h2></a>  
+                    </div>
+                    <div id="c">
+                        <a href="fantasquadra.html"><h2>Fantasquadra</h2></a>
+                    </div>      
+                    <div id="e">
+                        <a onclick="logout()"><h2>Logout</h2></a>
+                    </div>
+                    
+                <!-- Fine frame -->
+            </div>
+
+
+
+      <div class="col-md-9">
+
+<div class="panel panel-primary">
+
+  <div class="panel-heading col-md-5 " >Portieri</div>
+  <div class="panel-heading col-md-3" >Costo</div>
+  <div class="panel-heading col-md-4" >Squadra</div>
+
+    <div class="col-md-5" id="nomiPortieri" >
+      <div class="panel-body portiere ">p</div>
+      <div class="panel-body portiere ">p</div>
+      <div class="panel-body portiere">p</div>
+    </div>
+
+    <div class="col-md-3" id="costoPortieri">
+      <div class=" panel-body costoPortiere">costo</div>
+      <div class="panel-body costoPortiere">costo</div>
+      <div class="panel-body costoPortiere">costo</div>
+    </div>
+
+    <div class="col-md-4" id="squadrePortieri">
+      <div class=" panel-body squadraPortiere">costo</div>
+      <div class="panel-body squadraPortiere">costo</div>
+      <div class="panel-body squadraPortiere">costo</div>
+    </div>
+
+  <div class="panel-heading col-md-5">Difensori</div>
+  <div class="panel-heading col-md-3">Costo</div>
+  <div class="panel-heading col-md-4" >Squadra</div>
+  <div class="col-md-5" id="nomiDifensori">
+    <div class="panel-body difensore ">difensore</div>
+    <div class="panel-body difensore">difensore</div>
+    <div class="panel-body difensore">difensore</div>
+    <div class="panel-body difensore">difensore</div>
+    <div class="panel-body difensore">difensore</div>
+    <div class="panel-body difensore">difensore</div>
+    <div class="panel-body difensore">difensore</div>
+    <div class="panel-body difensore">difensore</div>
+  </div>
+
+  <div class="col-md-3" id="costoDifensori">
+      <div class="costoDifensore panel-body">costo</div>
+      <div class="panel-body costoDifensore">costo</div>
+      <div class="panel-body costoDifensore">costo</div>
+      <div class=" panel-body costoDifensore">costo</div>
+      <div class="panel-body costoDifensore">costo</div>
+      <div class="panel-body costoDifensore">costo</div>
+      <div class=" panel-body costoDifensore">costo</div>
+      <div class="panel-body costoDifensore">costo</div>
+    </div>
+    <div class="col-md-4" id="squadreDifensori">
+      <div class="squadraDifensore panel-body">costo</div>
+      <div class="panel-body squadraDifensore">costo</div>
+      <div class="panel-body squadraDifensore">costo</div>
+      <div class=" panel-body squadraDifensore">costo</div>
+      <div class="panel-body squadraDifensore">costo</div>
+      <div class="panel-body squadraDifensore">costo</div>
+      <div class=" panel-body squadraDifensore">costo</div>
+      <div class="panel-body squadraDifensore">costo</div>
+    </div>
+
+  <div class="panel-heading col-md-5 " >Centrocampisti</div>
+  <div class="panel-heading col-md-3" >Costo</div>
+  <div class="panel-heading col-md-4" >Squadra</div>
+    <div class="col-md-5" id="nomiCentrocampisti">
+      <div class=" panel-body centrocampista">centrocampista</div>
+      <div class="panel-body centrocampista">centrocampista</div>
+      <div class="panel-body centrocampista">centrocampista</div>
+      <div class="panel-body centrocampista">centrocampista</div>
+      <div class="panel-body centrocampista">centrocampista</div>
+      <div class="panel-body centrocampista">centrocampista</div>
+      <div class="panel-body centrocampista">centrocampista</div>
+      <div class="panel-body centrocampista">centrocampista</div>
+    </div>
+  
+  <div class="col-md-3" id="costoCentrocampisti">
+      <div class="costoCentrocampista panel-body">costo</div>
+      <div class="panel-body costoCentrocampista">costo</div>
+      <div class="costoCentrocampista panel-body">costo</div>
+      <div class="costoCentrocampista panel-body">costo</div>
+      <div class="costoCentrocampista panel-body">costo</div>
+      <div class="costoCentrocampista panel-body">costo</div>
+      <div class="costoCentrocampista panel-body">costo</div>
+      <div class="costoCentrocampista panel-body">costo</div>
+    </div>
+
+  <div class="col-md-4" id="squadreCentrocampisti">
+      <div class="squadraCentrocampista panel-body">costo</div>
+      <div class="panel-body squadraCentrocampista">costo</div>
+      <div class="squadraCentrocampista panel-body">costo</div>
+      <div class="squadraCentrocampista panel-body">costo</div>
+      <div class="squadraCentrocampista panel-body">costo</div>
+      <div class="squadraCentrocampista panel-body">costo</div>
+      <div class="squadraCentrocampista panel-body">costo</div>
+      <div class="squadraCentrocampista panel-body">costo</div>
+    </div>
+
+  <div class="panel-heading col-md-5 " >Attaccanti</div>
+  <div class="panel-heading col-md-3" >Costo</div>
+  <div class="panel-heading col-md-4" >Squadra</div>
+    <div class="col-md-5" id="nomiAttaccanti">
+      <div class="attaccante panel-body">attaccante</div>
+      <div class="attaccante panel-body">attaccante</div>
+      <div class="attaccante panel-body">attaccante</div>
+      <div class="attaccante panel-body">attaccante</div>
+      <div class="attaccante panel-body">attaccante</div>
+      <div class="attaccante panel-body">attaccante</div>
+    </div>
+
+    <div class="col-md-3" id="costoAttaccanti">
+      <div class="costoAttaccante panel-body">costo</div>
+      <div class="panel-body costoAttaccante">costo</div>
+      <div class="panel-body costoAttaccante">costo</div>
+      <div class=" panel-body costoAttaccante">costo</div>
+      <div class="panel-body costoAttaccante">costo</div>
+      <div class="panel-body costoAttaccante">costo</div>
+    </div>
+
+    <div class="col-md-4" id="squadreAttaccanti">
+      <div class="squadraAttaccante panel-body">costo</div>
+      <div class="panel-body squadraAttaccante">costo</div>
+      <div class="panel-body squadraAttaccante">costo</div>
+      <div class=" panel-body squadraAttaccante">costo</div>
+      <div class="panel-body squadraAttaccante">costo</div>
+      <div class="panel-body squadraAttaccante">costo</div>
+    </div>
+<script type="text/javascript"> caricaSquadraUtente();</script>
+</div>
+</div>
+
+
+</div>
+</div>
+
+
+<footer class="container-fluid text-center">
+  <p>
+
+  UFL - University Fanta League  -  Progetto di Ingegneria del Software  -  Realizzato da Giuseppe Paglialonga </p>
+
+</footer>
+
+
+
+</body>
+</html>

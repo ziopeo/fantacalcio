@@ -1,31 +1,45 @@
-<?php 
-	/* apertura sessione e successiva inclusione del file per la connessione al database*/
-	session_start();
-	include ("db_con.php");
-	
-	/* passaggio dei parametri per la query */
-	if ($_POST["nome_reg"] != "" && ["cognome_reg"] != "" && ["matricola_reg"] != "" && ["facolta_reg"] != "" && ["email_reg"] != "" && ["nomesquadra_reg"] != "" && ["pass_reg"] != ""){
-		
-		/* query */
-		$query_reg = mysql_query("INSERT INTO utenti (matricola,nome,cognome,facolta,email,password) VALUES (' ".$_POST["matricola_reg"]."','".$_POST["nome_reg"]."','".$_POST["cognome_reg"]."','".$_POST["facolta_reg"]."','".$_POST["email_reg"]."','".$_POST["pass_reg"]."')")
-		/*in caso fallisce la query */
-		or die("fallimento query registrazione, errore: ".mysql_error());
-	}
-	
-	/* se non sono soddisfatte le condizioni entra nell'else*/
-	else{
-		header('location:index.php?action=registrazione&errore=Non hai compilato tutti i campi');
-	}
-	
-	/* se la query è andata a buon fine */
-	if (isset($query_reg)){
-		/* restituisco il valore vero alla chiave logged in SESSION*/
-		$_SESSION["logged"]=true;
-		header("location:home.php");
-	}
-	
-	/* altrimenti restituisce errore */
-	else{
-		echo "non ti sei registrato con successo";
-	}
-?>
+<div class="row">
+  <div class=".container-fluid col-md-8 col-sm-8 center" id="login" >
+ 
+    <h2 id="loginIntestazione">Registrazione</h2><BR/>
+    <form role="form" method="POST" action="controller.php">
+      
+      <input type="hidden" name="metodo" value="registrazione">
+      
+      <div class="form-group" >
+        <label for="matricolaRegText">Matricola:</label>
+        <input type="text" class="form-control" name="matricolaUtente" id="matricolaRegText" placeholder="Immetti Matricola">
+      </div>
+
+      <div class="form-group" >
+        <label for="nomeRegText">Nome:</label>
+        <input type="text" class="form-control" name="nomeUtente" id="nomeRegText" placeholder="Immetti Nome">
+      </div>
+      
+      <div class="form-group" >
+        <label for="cognomeRegText">Cognome:</label>
+        <input type="text" class="form-control" name="cognomeUtente" id="cognomeRegText" placeholder="Immetti Cognome">
+      </div>
+      
+      <div class="form-group " >
+          <label for="passwordRegText">Password:</label>
+          <input type="password" name="passwordUtente" class="form-control" id="passwordRegText" placeholder="Immetti password">
+      </div>        
+      
+      <div class="form-group" >
+        <label for="emailRegText">Email:</label>
+        <input type="email" class="form-control" name="emailUtente" id="emailRegText" placeholder="Immetti email">
+      </div>
+
+      <div class="form-group">
+          <label> <select name="facoltaUtente" class="form-control" id="sceltaFacolta" >
+          </select></label>
+      </div>
+      <script type="text/javascript">caricaFacolta();</script>
+      <div class="col-sm-offset-2">
+        <input  type="submit" value="Registrati" class="btn btn-default">
+      </div>
+    </form>  
+  </div>
+</div>
+     
