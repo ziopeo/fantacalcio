@@ -41,8 +41,8 @@ else if (array_key_exists('metodo', $_POST))
                     break;
             case 'loginAdmin':
         //login per lamministratore -------dacompletare
-                if ($_SESSION['loggato']==verAdmin($_POST['utente'], $_POST['password']))
-                    echo $true;
+                if ($_SESSION['loggato']=verAdmin($_POST['utente'], $_POST['password']))
+                    {echo $true;$sw=false;}
             break;            
         
         case 'logout';
@@ -59,11 +59,13 @@ else if (array_key_exists('metodo', $_POST))
             else echo $false;
               break;
               
-case 'getFacolta':
+        case 'getFacolta':
                     if($x=getFacolta())
                        { echo $x;$sw=false;}
                    break;
+
                    default:$sw=true;
+                   
 
             }
     
@@ -81,8 +83,8 @@ case 'getFacolta':
                     break;
         case 'caricaArchivioGiocatori':
         //servizio crea un Archivio di Giocatori da un file 
-                    if($x=caricaGiocatori(peoCsvtoArray($_POST['fileGiocatori'])))
-                        {echo $x; $sw=false;}
+                    if(caricaGiocatori(peoCsvtoArray($_POST['fileGiocatori'])))
+                        {echo $true; $sw=false;}
                     break;
          
             case 'getGiocatoriSquadra':
@@ -123,7 +125,6 @@ case 'getFacolta':
 
             break;
                 case 'uploadGiocatori':
-                print_r($_FILES['fileGiocatori']);
                     if(isset($_FILES['fileGiocatori']))
                         if (caricaGiocatori($_FILES['fileGiocatori']['tmp_name']))
                             {echo $true; $sw=false;}
@@ -151,18 +152,13 @@ case 'getFacolta':
                             {echo $true; $sw=false; }
     
                 break;
-                case 'getFormazioneUtente':
                 
-                    if ($x=getFormazioneUtenteModel($_SESSION['loggato']))
-                        {echo $x;$sw=false;}
-                break;
                 case 'getVotoUltimaFormazione':
                     if ($x=getVotoUltimaFormazione($_SESSION['loggato']))
                         {echo $x;$sw=false;}
                 break;
 
-                default:
-                if($sw) echo $false;
+                
 
 
                 }

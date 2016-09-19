@@ -1,18 +1,18 @@
 <?php
 //caricaGiocatori: inserisce i giocatori con un query sul database da un array di giocatori
 function caricaGiocatori($file)
-{	$giocatori=peoCsvtoArray($file);
+{	$sw=true;
+	$giocatori=peoCsvtoArray($file);
 	$idArchivioLega=creaArchivioLega();
 	for ($i=1; $i<=count($giocatori); $i++){
 		$arr=$giocatori[$i];
 		$conn=getDatabase();	
 		$queryInserisci = 'INSERT INTO Giocatore(`idgiocatore`, `ruolo`, `nome`, `squadra`, `prezzoIniziale`, `prezzoAttuale`) VALUES ('. $arr[0].' ,"'. $arr[2].'","'. $arr[1].'","'. $arr[4].'",'. $arr[5].','. $arr[6].')';
-	 	echo $queryInserisci;
 	 	$queryArchivia='INSERT INTO `GiocatoreArchiviato`(`archivioLega`, `giocatore`) VALUES ('. $idArchivioLega .','.$arr[0]. ')'; 
- 		mysqli_query($conn, $queryInserisci) or die ("Errore queryInserisci\n ");
-		$result =mysqli_query($conn, $queryArchivia) or die ("Errore queryArchivia\n ");
+ 		mysqli_query($conn, $queryInserisci) or $sw=false;
+		$result =mysqli_query($conn, $queryArchivia) or $sw=false;
 	}
-return $result;
+return $sw;
 }
 
 function creaArchivioLega()

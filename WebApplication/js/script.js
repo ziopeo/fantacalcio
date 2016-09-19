@@ -69,8 +69,20 @@ function loginAja() {
 
     var aler= document.getElementById("alertlogin");
     if (admin.checked){
-        connectA("metodo=loginAdmin&utente=" + ut.value + "&password=" + pass.value);
-
+        var xmll=connectA("metodo=loginAdmin&utente=" + ut.value + "&password=" + pass.value);
+        xmll.onreadystatechange = function() {
+        if (xmll.readyState == 4 && xmll.status == 200) {
+            console.log();
+            var t=JSON.parse(xmll.responseText)
+             
+            if(t[0].status=="true")
+            window.location=("admin.html");
+            else
+                { 
+               aler.style.visibility = "visible";
+            }
+        }
+    }
     }
     else{
        var xml= connectA("metodo=login&utente=" + ut.value + "&password=" + pass.value);

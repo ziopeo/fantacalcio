@@ -6,14 +6,7 @@
 <BODY>
 <div id="container">
 <h1> TEST BLACK BOX BACK END <H1>
-<h4> TEST LOGIN <H4>
-<br><br><button onclick="testasuccessologin();">Test Login: Successo</button>
-<button id="logsuc" disabled onclick="testasuccessologout();">Test Logout: Successo</button>
-<button onclick="testafallimentologin();">Test Login: Fallimento</button>
-<button id="logfal"  onclick="testafallimentologout();">Test Logout: Fallimento</button><br>
-<DIV id="testbackend">Inizio...
 
-</DIV>
 
 <h4> TEST REGISTRAZIONE  <H4>
 <br><br><button id="regbut" onclick="testasuccessoregistrazione();this.disabled=true;">Test Registrazione: Successo</button>
@@ -22,9 +15,20 @@
 
 </DIV>
 
+<h4> TEST LOGIN <H4>
+<br><br><button disabled id="loginsuc" onclick="testasuccessologin();">Test Login: Successo</button>
+<button id="logsuc" disabled onclick="testasuccessologout();">Test Logout: Successo</button>
+<button onclick="testafallimentologin();">Test Login: Fallimento</button>
+<button id="logfal"  onclick="testafallimentologout();">Test Logout: Fallimento</button><br>
+<DIV id="testbackend">Inizio...
+
+</DIV>
+
 <h4> TEST API  <H4>
-<br><br><button onclick="testagetsquadrautente(elementgen);">Test API: getSquadraUtente</button>
-<br><button onclick="testagetfacolta(elementgen);">Test API: getFacoltà</button>
+<br><br>
+<button onclick="testalogincondatitest()">carica TEST DRIVER per test API</button>
+<button onclick="testagetsquadrautente(elementgen);">Test API: getSquadraUtente</button>
+<button onclick="testagetfacolta(elementgen);">Test API: getFacoltà</button>
 <button onclick="testagetsquadre(elementgen);">Test API: getSquadre()</button>
 <button onclick="testagetformazioneutente(elementgen);">Test API: getFormazioneUtente</button>
 <button onclick="testagetgiocatorisquadra(elementgen);">Test API: getGiocatoriSquadra</button>
@@ -41,7 +45,7 @@
 </DIV>
 
 <SCRIPT>
-
+var loginsuc= document.getElementById("loginsuc");
 var logsuc= document.getElementById("logsuc");
 var logfal= document.getElementById("logfal");
 var regbut= document.getElementById("regbut");
@@ -69,8 +73,6 @@ testafallimentoregistrazione
 testagetfacolta
 testagetgiocatorisquadra
 testagetinformazionigiocatore*/
-testasuccessoregistrazione();
-testasuccessologin();
 
   a=document.createElement("div");
   b=document.createElement("div");
@@ -86,7 +88,7 @@ testasuccessologin();
     container.appendChild(e);
     container.appendChild(f);
     container.appendChild(g);
-    
+    testalogincondatitest();
     testagetsquadre(a);
     testagetformazioneutente(b);
     testagetfacolta(c);
@@ -119,13 +121,14 @@ function testa(metodo, msg,divid)
             var x = JSON.parse(xml.responseText);
 
             if(x[0].status=="true") 
-              var y= msg+ "<BR>Test <h4>API"+metodo +"</h4>:<BR> Test eseguito con successo<BR><br>";
+              var y= msg+ "<BR>Test <h2>API"+metodo +"</h2>:<BR> Test eseguito con successo<BR><br>";
             else if(x.length>1)
-              var y= msg+ "<BR>Test <h4>API:"+metodo +"</h4><br> Test eseguito con successo<br>"+ xml.responseText+ "<br><br>";
+              var y= msg+ "<BR>Test <h2>API:"+metodo +"</h2><br> Test eseguito con successo<br>"+ xml.responseText+ "<br><br>";
           else if (x[0].status=="false" ) 
             y=msg+"<BR>Test <h4>"+metodo+"</h4> Fallito<BR><BR>";
           else if(x[0].idGiocatore!="")
             var y= msg+ "<BR>Test <h2>API:"+metodo +"</h2><br>eseguito con successo<br>"+ xml.responseText+ "<br>";
+          else if(x=="") y=msg+"<BR>Test <h4>"+metodo+"</h4> Fallito<BR><BR>";
 
 
 divid.innerHTML=y;
@@ -213,36 +216,29 @@ element.innerHTML=y;
         
 }
 
-function testagetsquadrautente(divid)
-{
-  testa("getSquadraUtente", "Oracolo: restituisce un oggetto json con i componenti della squadra dell utente loggato", divid);
-}
-function testagetfacolta(divid)
-{
-  testa("getFacolta", "Oracolo: restituisce un oggetto json con le facoltà presenti nel sistema", divid);
-}
 
-  
 
 
 
 function testasuccessologin() 
 {
-  testlogin("0510200479", "ciao", "Oracolo: il login viene effettuato con successo.");logsuc.disabled=false;logfal.disabled=true;
+  testlogin("0510200200", "pass", "<H2>Oracolo:</H2> il login viene effettuato con successo.");logsuc.disabled=false;logfal.disabled=true;
 }
 function testasuccessologout()
 {
- testlogout("Oracolo: il logout viene effettuato con successo."); logsuc.disabled=true;logfal.disabled=false;  
+ testlogout("<H2>Oracolo:</H2> il logout viene effettuato con successo."); logsuc.disabled=true;logfal.disabled=false;  
   }
 
   function testafallimentologin() 
-{testlogin("sdafsaf", "sadfasd", "Oracolo: il login non va a buon fine");}
+{testlogin("sdafsaf", "sadfasd", "<H2>Oracolo:</H2> il login non va a buon fine");}
   
   function testafallimentologout()
   {
-  testlogout("Oracolo: il login non va a buon fine in quanto non si è loggati");   
+  testlogout("<H2>Oracolo:</H2> il logout non va a buon fine in quanto non si è loggati");   
   }
 
+function testalogincondatitest() 
+{testlogin("0510200479", "ciao", "<H2>Oracolo:</H2> il login va a buon fine<BR> i TEST DRIVER SONO DISPONIBILI ORA<BR>");}
 function testasuccessoregistrazione()
 {
 matricola="0510200200";
@@ -252,7 +248,8 @@ matricola="0510200200";
   password="pass";
   idFacolta=1;
   squadra="lanina";
-testaregistrazione(matricola, nome, cognome, username, password, idFacolta, squadra, "Oracolo: Registrazione viene effettuata con successo");
+testaregistrazione(matricola, nome, cognome, username, password, idFacolta, squadra, "<H2>Oracolo:</H2> Registrazione viene effettuata con successo");
+loginsuc.disabled=false;
 }
 
 function testafallimentoregistrazione()
@@ -264,17 +261,27 @@ matricola="";
   password="";
   idFacolta=1;
   squadra="lanina";
-testaregistrazione(matricola, nome, cognome, username, password, idFacolta, squadra, "Oracolo: La registrazione non va a buon fine");
+testaregistrazione(matricola, nome, cognome, username, password, idFacolta, squadra, "<H2>Oracolo:</H2> La registrazione non va a buon fine");
 }
 function testagetsquadre(divid)
- { testa("getSquadre", 'Test: getSquadre<BR> Oracolo: {restituisce un oggetto json con le squadre dei giocatori reali presenti nel sistema} "',divid );}
+ { testa("getSquadre", 'Test: getSquadre<BR> <H2>Oracolo:</H2> {restituisce un oggetto json con le squadre dei giocatori reali presenti nel sistema} - permessi utente "',divid );}
 function testagetformazioneutente(divid)
- { testa("getFormazioneUtente", 'Test: getFormazioneUtente<BR> Oracolo {restituisce unoggetto  json con la formazione dellutente loggato} "' ,divid);}
+ { testa("getFormazioneUtente", 'Test: getFormazioneUtente<BR> Oracolo {restituisce unoggetto  json con la formazione dellutente loggato} - permessi utente "' ,divid);}
 
 function testagetinformazionigiocatore(divid)
- { testa("getInformazioniGiocatore&calciatore=BASSI", 'TEST DRIVER: CALCIATORE=BASSI<BR>Test: getInformazioniGiocatore<BR> Oracolo {restituisce un oggetto json con le informazioni sul calciatore}"', divid );}
+ { testa("getInformazioniGiocatore&calciatore=BASSI", 'Test: getInformazioniGiocatore<BR>TEST DRIVER: CALCIATORE=BASSI<BR> Oracolo {restituisce un oggetto json con le informazioni sul calciatore} - permessi utente"', divid );}
 function testagetgiocatorisquadra(divid)
- { testa("getGiocatoriSquadra&squadra=milan", 'TEST DRIVER: squadra=MILAN <br>Test: getGiocatoriSquadra<BR> Oracolo: {restituisce un oggetto json con i giocatori della squadra MILAN} "', divid );}
+ { testa("getGiocatoriSquadra&squadra=milan", 'Test: getGiocatoriSquadra<BR>TEST DRIVER: squadra=MILAN <br> <H2>Oracolo:</H2> {restituisce un oggetto json con i giocatori della squadra MILAN} - permessi utente"', divid );}
+ function testagetsquadrautente(divid)
+{
+  testa("getSquadraUtente", "<br>Test: getSquadraUtente (loggato)<br><H2>Oracolo:</H2> restituisce un oggetto json con i componenti della squadra dell utente loggato - permessi utente", divid);
+}
+function testagetfacolta(divid)
+{
+  testa("getFacolta", "<br>Test: getFacolta()<br><H2>Oracolo:</H2> restituisce un oggetto json con le facoltà presenti nel sistema - permessi pubblici", divid);
+}
+
+  
 
 
 </SCRIPT>

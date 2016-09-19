@@ -18,6 +18,7 @@ function registraUtente($matricola, $nome, $cognome, $email, $password, $idFacol
 function verAdmin($ut, $pa){
 	$sql="SELECT email FROM Admin WHERE email= '$ut' AND password='$pa'" ;
 	$conn=getDatabase();
+	echo $sql;
 	$result= mysqli_query($conn, $sql) or die ("Errore query verifica admin\n ");
 	$row=mysqli_fetch_assoc($result);
 $_SESSION['loggato']= $row['email'];
